@@ -1,0 +1,8 @@
+{
+  "parent": "immersive_weathering:block/mossy_template_wall_side_tall",
+  "textures": {
+    "bottom": "immersive_weathering:block/sandy_stone_bricks_1",
+    "side": "immersive_weathering:block/sandy_stone_bricks_1",
+    "top": "immersive_weathering:block/sandy_stone_bricks_1"
+  }
+}

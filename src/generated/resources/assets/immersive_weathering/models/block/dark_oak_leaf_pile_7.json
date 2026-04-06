@@ -1,0 +1,6 @@
+{
+  "parent": "immersive_weathering:block/leaf_pile/layers_7",
+  "textures": {
+    "texture": "immersive_weathering:block/heavy_dark_oak_leaves"
+  }
+}

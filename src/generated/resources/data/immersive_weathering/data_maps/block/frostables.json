@@ -1,0 +1,19 @@
+{
+  "values": {
+    "minecraft:air": {
+      "next_stage": "immersive_weathering:frost"
+    },
+    "minecraft:fern": {
+      "next_stage": "immersive_weathering:frosty_fern"
+    },
+    "minecraft:glass": {
+      "next_stage": "immersive_weathering:frosty_glass"
+    },
+    "minecraft:glass_pane": {
+      "next_stage": "immersive_weathering:frosty_glass_pane"
+    },
+    "minecraft:short_grass": {
+      "next_stage": "immersive_weathering:frosty_grass"
+    }
+  }
+}

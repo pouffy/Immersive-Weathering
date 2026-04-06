@@ -1,0 +1,6 @@
+{
+  "parent": "immersive_weathering:block/leaf_pile/layers_8",
+  "textures": {
+    "texture": "immersive_weathering:block/heavy_flowering_azalea_leaves"
+  }
+}

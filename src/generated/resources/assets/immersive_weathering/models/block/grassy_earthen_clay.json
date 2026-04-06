@@ -1,0 +1,11 @@
+{
+  "parent": "immersive_weathering:block/grassy_block",
+  "textures": {
+    "bottom": "immersive_weathering:block/earthen_clay_bottom",
+    "particle": "immersive_weathering:block/earthen_clay_bottom",
+    "side": "immersive_weathering:block/grassy_earthen_clay_side",
+    "side_overlay": "immersive_weathering:block/grassy_earthen_clay_side_overlay",
+    "top": "immersive_weathering:block/grassy_earthen_clay_top",
+    "top_overlay": "immersive_weathering:block/grassy_earthen_clay_top_overlay"
+  }
+}

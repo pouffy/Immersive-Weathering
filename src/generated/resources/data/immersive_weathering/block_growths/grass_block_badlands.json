@@ -1,0 +1,215 @@
+{
+  "area_condition": {
+    "type": "generate_if_not_too_many",
+    "must_have": {
+      "blocks": "#immersive_weathering:grass_spread_source",
+      "predicate_type": "immersive_weathering:block_set_match"
+    },
+    "radiusX": 2,
+    "radiusY": 2,
+    "radiusZ": 2,
+    "requiredAmount": 4
+  },
+  "growth_chance": 0.001,
+  "growth_for_face": [
+    {
+      "direction": "up",
+      "growth": [
+        {
+          "data": {
+            "block": {
+              "Name": "immersive_weathering:dune_grass"
+            }
+          },
+          "weight": 5
+        },
+        {
+          "data": {
+            "block": {
+              "Name": "minecraft:dead_bush"
+            }
+          },
+          "weight": 1
+        },
+        {
+          "data": {
+            "block": {
+              "Name": "minecraft:short_grass"
+            }
+          },
+          "weight": 0
+        }
+      ],
+      "weight": 1
+    },
+    {
+      "direction": "down",
+      "growth": [
+        {
+          "data": {
+            "block": {
+              "Name": "immersive_weathering:dune_grass"
+            }
+          },
+          "weight": 5
+        },
+        {
+          "data": {
+            "block": {
+              "Name": "minecraft:dead_bush"
+            }
+          },
+          "weight": 1
+        },
+        {
+          "data": {
+            "block": {
+              "Name": "minecraft:short_grass"
+            }
+          },
+          "weight": 0
+        }
+      ],
+      "weight": 1
+    },
+    {
+      "direction": "north",
+      "growth": [
+        {
+          "data": {
+            "block": {
+              "Name": "immersive_weathering:dune_grass"
+            }
+          },
+          "weight": 5
+        },
+        {
+          "data": {
+            "block": {
+              "Name": "minecraft:dead_bush"
+            }
+          },
+          "weight": 1
+        },
+        {
+          "data": {
+            "block": {
+              "Name": "minecraft:short_grass"
+            }
+          },
+          "weight": 0
+        }
+      ],
+      "weight": 1
+    },
+    {
+      "direction": "south",
+      "growth": [
+        {
+          "data": {
+            "block": {
+              "Name": "immersive_weathering:dune_grass"
+            }
+          },
+          "weight": 5
+        },
+        {
+          "data": {
+            "block": {
+              "Name": "minecraft:dead_bush"
+            }
+          },
+          "weight": 1
+        },
+        {
+          "data": {
+            "block": {
+              "Name": "minecraft:short_grass"
+            }
+          },
+          "weight": 0
+        }
+      ],
+      "weight": 1
+    },
+    {
+      "direction": "west",
+      "growth": [
+        {
+          "data": {
+            "block": {
+              "Name": "immersive_weathering:dune_grass"
+            }
+          },
+          "weight": 5
+        },
+        {
+          "data": {
+            "block": {
+              "Name": "minecraft:dead_bush"
+            }
+          },
+          "weight": 1
+        },
+        {
+          "data": {
+            "block": {
+              "Name": "minecraft:short_grass"
+            }
+          },
+          "weight": 0
+        }
+      ],
+      "weight": 1
+    },
+    {
+      "direction": "east",
+      "growth": [
+        {
+          "data": {
+            "block": {
+              "Name": "immersive_weathering:dune_grass"
+            }
+          },
+          "weight": 5
+        },
+        {
+          "data": {
+            "block": {
+              "Name": "minecraft:dead_bush"
+            }
+          },
+          "weight": 1
+        },
+        {
+          "data": {
+            "block": {
+              "Name": "minecraft:short_grass"
+            }
+          },
+          "weight": 0
+        }
+      ],
+      "weight": 1
+    }
+  ],
+  "owners": "#immersive_weathering:grassy_blocks",
+  "position_predicates": [
+    {
+      "type": "biome_match",
+      "biomes": [
+        "minecraft:badlands",
+        "minecraft:eroded_badlands",
+        "minecraft:desert"
+      ]
+    }
+  ],
+  "replacing_target": {
+    "block": "minecraft:air",
+    "predicate_type": "minecraft:random_block_match",
+    "probability": 0.8
+  },
+  "tick_sources": [
+    "block_tick"
+  ]
+}

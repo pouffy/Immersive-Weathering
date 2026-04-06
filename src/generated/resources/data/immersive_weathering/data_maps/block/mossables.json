@@ -1,0 +1,55 @@
+{
+  "values": {
+    "immersive_weathering:stone_wall": {
+      "next_stage": "immersive_weathering:mossy_stone_wall"
+    },
+    "minecraft:brick_slab": {
+      "next_stage": "immersive_weathering:mossy_brick_slab"
+    },
+    "minecraft:brick_stairs": {
+      "next_stage": "immersive_weathering:mossy_brick_stairs"
+    },
+    "minecraft:brick_wall": {
+      "next_stage": "immersive_weathering:mossy_brick_wall"
+    },
+    "minecraft:bricks": {
+      "next_stage": "immersive_weathering:mossy_bricks"
+    },
+    "minecraft:chiseled_stone_bricks": {
+      "next_stage": "immersive_weathering:mossy_chiseled_stone_bricks"
+    },
+    "minecraft:cobblestone": {
+      "next_stage": "minecraft:mossy_cobblestone"
+    },
+    "minecraft:cobblestone_slab": {
+      "next_stage": "minecraft:mossy_cobblestone_slab"
+    },
+    "minecraft:cobblestone_stairs": {
+      "next_stage": "minecraft:mossy_cobblestone_stairs"
+    },
+    "minecraft:cobblestone_wall": {
+      "next_stage": "minecraft:mossy_cobblestone_wall"
+    },
+    "minecraft:stone": {
+      "next_stage": "immersive_weathering:mossy_stone"
+    },
+    "minecraft:stone_brick_slab": {
+      "next_stage": "minecraft:mossy_stone_brick_slab"
+    },
+    "minecraft:stone_brick_stairs": {
+      "next_stage": "minecraft:mossy_stone_brick_stairs"
+    },
+    "minecraft:stone_brick_wall": {
+      "next_stage": "minecraft:mossy_stone_brick_wall"
+    },
+    "minecraft:stone_bricks": {
+      "next_stage": "minecraft:mossy_stone_bricks"
+    },
+    "minecraft:stone_slab": {
+      "next_stage": "immersive_weathering:mossy_stone_slab"
+    },
+    "minecraft:stone_stairs": {
+      "next_stage": "immersive_weathering:mossy_stone_stairs"
+    }
+  }
+}

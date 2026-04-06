@@ -1,0 +1,22 @@
+{
+  "values": {
+    "immersive_weathering:charred_fence": {
+      "burn_time": 200
+    },
+    "immersive_weathering:charred_fence_gate": {
+      "burn_time": 200
+    },
+    "immersive_weathering:charred_log": {
+      "burn_time": 1600
+    },
+    "immersive_weathering:charred_planks": {
+      "burn_time": 400
+    },
+    "immersive_weathering:charred_slab": {
+      "burn_time": 200
+    },
+    "immersive_weathering:charred_stairs": {
+      "burn_time": 200
+    }
+  }
+}

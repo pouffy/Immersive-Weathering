@@ -1,0 +1,6 @@
+{
+  "parent": "immersive_weathering:block/leaf_pile/layers_5",
+  "textures": {
+    "texture": "immersive_weathering:block/medium_acacia_leaves"
+  }
+}

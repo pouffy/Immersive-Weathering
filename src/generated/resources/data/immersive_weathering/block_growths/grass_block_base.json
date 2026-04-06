@@ -1,0 +1,110 @@
+{
+  "area_condition": {
+    "type": "generate_if_not_too_many",
+    "includes": "#immersive_weathering:small_plants",
+    "must_have": {
+      "blocks": "#immersive_weathering:grass_spread_source",
+      "predicate_type": "immersive_weathering:block_set_match"
+    },
+    "radiusX": 2,
+    "radiusY": 2,
+    "radiusZ": 2,
+    "requiredAmount": 5
+  },
+  "growth_chance": 0.003,
+  "growth_for_face": [
+    {
+      "direction": "up",
+      "growth": [
+        {
+          "data": {
+            "block": {
+              "Name": "minecraft:short_grass"
+            }
+          },
+          "weight": 1
+        }
+      ],
+      "weight": 1
+    },
+    {
+      "direction": "down",
+      "growth": [
+        {
+          "data": {
+            "block": {
+              "Name": "minecraft:short_grass"
+            }
+          },
+          "weight": 1
+        }
+      ],
+      "weight": 1
+    },
+    {
+      "direction": "north",
+      "growth": [
+        {
+          "data": {
+            "block": {
+              "Name": "minecraft:short_grass"
+            }
+          },
+          "weight": 1
+        }
+      ],
+      "weight": 1
+    },
+    {
+      "direction": "south",
+      "growth": [
+        {
+          "data": {
+            "block": {
+              "Name": "minecraft:short_grass"
+            }
+          },
+          "weight": 1
+        }
+      ],
+      "weight": 1
+    },
+    {
+      "direction": "west",
+      "growth": [
+        {
+          "data": {
+            "block": {
+              "Name": "minecraft:short_grass"
+            }
+          },
+          "weight": 1
+        }
+      ],
+      "weight": 1
+    },
+    {
+      "direction": "east",
+      "growth": [
+        {
+          "data": {
+            "block": {
+              "Name": "minecraft:short_grass"
+            }
+          },
+          "weight": 1
+        }
+      ],
+      "weight": 1
+    }
+  ],
+  "owners": "#immersive_weathering:grassy_blocks",
+  "replacing_target": {
+    "block": "minecraft:air",
+    "predicate_type": "minecraft:random_block_match",
+    "probability": 0.4
+  },
+  "tick_sources": [
+    "block_tick"
+  ]
+}

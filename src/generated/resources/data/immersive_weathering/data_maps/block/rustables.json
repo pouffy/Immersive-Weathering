@@ -1,0 +1,94 @@
+{
+  "values": {
+    "immersive_weathering:cut_iron": {
+      "next_stage": "immersive_weathering:exposed_cut_iron"
+    },
+    "immersive_weathering:cut_iron_slab": {
+      "next_stage": "immersive_weathering:exposed_cut_iron_slab"
+    },
+    "immersive_weathering:cut_iron_stairs": {
+      "next_stage": "immersive_weathering:exposed_cut_iron_stairs"
+    },
+    "immersive_weathering:exposed_cut_iron": {
+      "next_stage": "immersive_weathering:weathered_cut_iron"
+    },
+    "immersive_weathering:exposed_cut_iron_slab": {
+      "next_stage": "immersive_weathering:weathered_cut_iron_slab"
+    },
+    "immersive_weathering:exposed_cut_iron_stairs": {
+      "next_stage": "immersive_weathering:weathered_cut_iron_stairs"
+    },
+    "immersive_weathering:exposed_iron_bars": {
+      "next_stage": "immersive_weathering:weathered_iron_bars"
+    },
+    "immersive_weathering:exposed_iron_door": {
+      "next_stage": "immersive_weathering:weathered_iron_door"
+    },
+    "immersive_weathering:exposed_iron_trapdoor": {
+      "next_stage": "immersive_weathering:weathered_iron_trapdoor"
+    },
+    "immersive_weathering:exposed_plate_iron": {
+      "next_stage": "immersive_weathering:weathered_plate_iron"
+    },
+    "immersive_weathering:exposed_plate_iron_slab": {
+      "next_stage": "immersive_weathering:weathered_plate_iron_slab"
+    },
+    "immersive_weathering:exposed_plate_iron_stairs": {
+      "next_stage": "immersive_weathering:weathered_plate_iron_stairs"
+    },
+    "immersive_weathering:plate_iron": {
+      "next_stage": "immersive_weathering:exposed_plate_iron"
+    },
+    "immersive_weathering:plate_iron_slab": {
+      "next_stage": "immersive_weathering:exposed_plate_iron_slab"
+    },
+    "immersive_weathering:plate_iron_stairs": {
+      "next_stage": "immersive_weathering:exposed_plate_iron_stairs"
+    },
+    "immersive_weathering:rusted_cut_iron": {},
+    "immersive_weathering:rusted_cut_iron_slab": {},
+    "immersive_weathering:rusted_cut_iron_stairs": {},
+    "immersive_weathering:rusted_iron_bars": {},
+    "immersive_weathering:rusted_iron_door": {},
+    "immersive_weathering:rusted_iron_trapdoor": {},
+    "immersive_weathering:rusted_plate_iron": {},
+    "immersive_weathering:rusted_plate_iron_slab": {},
+    "immersive_weathering:rusted_plate_iron_stairs": {},
+    "immersive_weathering:weathered_cut_iron": {
+      "next_stage": "immersive_weathering:rusted_cut_iron"
+    },
+    "immersive_weathering:weathered_cut_iron_slab": {
+      "next_stage": "immersive_weathering:rusted_cut_iron_slab"
+    },
+    "immersive_weathering:weathered_cut_iron_stairs": {
+      "next_stage": "immersive_weathering:rusted_cut_iron_stairs"
+    },
+    "immersive_weathering:weathered_iron_bars": {
+      "next_stage": "immersive_weathering:rusted_iron_bars"
+    },
+    "immersive_weathering:weathered_iron_door": {
+      "next_stage": "immersive_weathering:rusted_iron_door"
+    },
+    "immersive_weathering:weathered_iron_trapdoor": {
+      "next_stage": "immersive_weathering:rusted_iron_trapdoor"
+    },
+    "immersive_weathering:weathered_plate_iron": {
+      "next_stage": "immersive_weathering:rusted_plate_iron"
+    },
+    "immersive_weathering:weathered_plate_iron_slab": {
+      "next_stage": "immersive_weathering:rusted_plate_iron_slab"
+    },
+    "immersive_weathering:weathered_plate_iron_stairs": {
+      "next_stage": "immersive_weathering:rusted_plate_iron_stairs"
+    },
+    "minecraft:iron_bars": {
+      "next_stage": "immersive_weathering:exposed_iron_bars"
+    },
+    "minecraft:iron_door": {
+      "next_stage": "immersive_weathering:exposed_iron_door"
+    },
+    "minecraft:iron_trapdoor": {
+      "next_stage": "immersive_weathering:exposed_iron_trapdoor"
+    }
+  }
+}

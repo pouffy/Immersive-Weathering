@@ -1,0 +1,123 @@
+{
+  "area_condition": {
+    "type": "neighbor_based_generation",
+    "must_have": {
+      "block": "minecraft:air",
+      "predicate_type": "minecraft:block_match"
+    }
+  },
+  "growth_chance": 0.08,
+  "growth_for_face": [
+    {
+      "direction": "up",
+      "growth": [
+        {
+          "data": {
+            "block": {
+              "Name": "immersive_weathering:frosty_fern",
+              "Properties": {
+                "natural": "true"
+              }
+            }
+          },
+          "weight": 1
+        }
+      ],
+      "weight": 1
+    },
+    {
+      "direction": "down",
+      "growth": [
+        {
+          "data": {
+            "block": {
+              "Name": "immersive_weathering:frosty_fern",
+              "Properties": {
+                "natural": "true"
+              }
+            }
+          },
+          "weight": 1
+        }
+      ],
+      "weight": 1
+    },
+    {
+      "direction": "north",
+      "growth": [
+        {
+          "data": {
+            "block": {
+              "Name": "immersive_weathering:frosty_fern",
+              "Properties": {
+                "natural": "true"
+              }
+            }
+          },
+          "weight": 1
+        }
+      ],
+      "weight": 1
+    },
+    {
+      "direction": "south",
+      "growth": [
+        {
+          "data": {
+            "block": {
+              "Name": "immersive_weathering:frosty_fern",
+              "Properties": {
+                "natural": "true"
+              }
+            }
+          },
+          "weight": 1
+        }
+      ],
+      "weight": 1
+    },
+    {
+      "direction": "west",
+      "growth": [
+        {
+          "data": {
+            "block": {
+              "Name": "immersive_weathering:frosty_fern",
+              "Properties": {
+                "natural": "true"
+              }
+            }
+          },
+          "weight": 1
+        }
+      ],
+      "weight": 1
+    },
+    {
+      "direction": "east",
+      "growth": [
+        {
+          "data": {
+            "block": {
+              "Name": "immersive_weathering:frosty_fern",
+              "Properties": {
+                "natural": "true"
+              }
+            }
+          },
+          "weight": 1
+        }
+      ],
+      "weight": 1
+    }
+  ],
+  "owners": "minecraft:fern",
+  "replacing_target": {
+    "block": "minecraft:air",
+    "predicate_type": "minecraft:block_match"
+  },
+  "target_self": true,
+  "tick_sources": [
+    "snow"
+  ]
+}

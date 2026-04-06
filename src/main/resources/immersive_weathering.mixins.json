@@ -1,0 +1,42 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "io.github.pouffy.immersive_weathering.mixins",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "AttachedStemBlockMixin",
+    "BeeMixin",
+    "BubbleColumnMixin",
+    "BushBlockMixin",
+    "CampfireMixin",
+    "CropBlockMixin",
+    "EatBlockGoalMixin",
+    "FireMixin",
+    "FluidInteractionRegistryMixin",
+    "GrassBlockMixin",
+    "IceMixin",
+    "LeavesMixin",
+    "LiquidBlockMixin",
+    "MudBlockHitboxMixin",
+    "RabbitEatGoalMixin",
+    "RootedDirtBlockMixin",
+    "ServerLevelMixin",
+    "SnowballMixin",
+    "SnowLayerBlockMixin",
+    "StemBlockMixin",
+    "SugarCaneBlockMixin",
+    "SweetBerryBushMixin",
+    "WebMixin",
+    "accessors.BiomeAccessor",
+    "accessors.IceInvoker",
+    "accessors.RandomBlockMatchTestAccessor"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  }
+}

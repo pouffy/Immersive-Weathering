@@ -1,0 +1,22 @@
+package io.github.pouffy.immersive_weathering.data.block_growths.growths;
+
+import io.github.pouffy.immersive_weathering.data.block_growths.TickSource;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+
+import javax.annotation.Nullable;
+import java.util.Collection;
+import java.util.function.Supplier;
+
+public interface IBlockGrowth {
+    @Nullable
+    Iterable<? extends Block> getOwners();
+
+    void tryGrowing(BlockPos pos, BlockState state, ServerLevel level, Supplier<Holder<Biome>> biome);
+
+    Collection<TickSource> getTickSources();
+}

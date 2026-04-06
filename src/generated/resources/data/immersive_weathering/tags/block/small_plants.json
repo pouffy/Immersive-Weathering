@@ -1,0 +1,10 @@
+{
+  "values": [
+    "immersive_weathering:frosty_grass",
+    "immersive_weathering:frosty_fern",
+    "minecraft:short_grass",
+    "minecraft:fern",
+    "#immersive_weathering:leaf_piles",
+    "#minecraft:flowers"
+  ]
+}

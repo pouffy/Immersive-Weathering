@@ -1,0 +1,6 @@
+{
+  "parent": "immersive_weathering:block/layered_6",
+  "textures": {
+    "texture": "minecraft:block/red_sand"
+  }
+}

@@ -1,0 +1,132 @@
+{
+  "values": {
+    "immersive_weathering:prismarine_brick_wall": {
+      "next_stage": "immersive_weathering:cracked_prismarine_brick_wall",
+      "repair_item": "immersive_weathering:prismarine_brick"
+    },
+    "minecraft:brick_slab": {
+      "next_stage": "immersive_weathering:cracked_brick_slab",
+      "repair_item": "minecraft:brick"
+    },
+    "minecraft:brick_stairs": {
+      "next_stage": "immersive_weathering:cracked_brick_stairs",
+      "repair_item": "minecraft:brick"
+    },
+    "minecraft:brick_wall": {
+      "next_stage": "immersive_weathering:cracked_brick_wall",
+      "repair_item": "minecraft:brick"
+    },
+    "minecraft:bricks": {
+      "next_stage": "immersive_weathering:cracked_bricks",
+      "repair_item": "minecraft:brick"
+    },
+    "minecraft:deepslate_brick_slab": {
+      "next_stage": "immersive_weathering:cracked_deepslate_brick_slab",
+      "repair_item": "immersive_weathering:deepslate_brick"
+    },
+    "minecraft:deepslate_brick_stairs": {
+      "next_stage": "immersive_weathering:cracked_deepslate_brick_stairs",
+      "repair_item": "immersive_weathering:deepslate_brick"
+    },
+    "minecraft:deepslate_brick_wall": {
+      "next_stage": "immersive_weathering:cracked_deepslate_brick_wall",
+      "repair_item": "immersive_weathering:deepslate_brick"
+    },
+    "minecraft:deepslate_bricks": {
+      "next_stage": "minecraft:cracked_deepslate_bricks",
+      "repair_item": "immersive_weathering:deepslate_brick"
+    },
+    "minecraft:deepslate_tile_slab": {
+      "next_stage": "immersive_weathering:cracked_deepslate_tile_slab",
+      "repair_item": "immersive_weathering:deepslate_tile"
+    },
+    "minecraft:deepslate_tile_stairs": {
+      "next_stage": "immersive_weathering:cracked_deepslate_tile_stairs",
+      "repair_item": "immersive_weathering:deepslate_tile"
+    },
+    "minecraft:deepslate_tile_wall": {
+      "next_stage": "immersive_weathering:cracked_deepslate_tile_wall",
+      "repair_item": "immersive_weathering:deepslate_tile"
+    },
+    "minecraft:deepslate_tiles": {
+      "next_stage": "minecraft:cracked_deepslate_tiles",
+      "repair_item": "immersive_weathering:deepslate_tile"
+    },
+    "minecraft:end_stone_brick_slab": {
+      "next_stage": "immersive_weathering:cracked_end_stone_brick_slab",
+      "repair_item": "immersive_weathering:end_stone_brick"
+    },
+    "minecraft:end_stone_brick_stairs": {
+      "next_stage": "immersive_weathering:cracked_end_stone_brick_stairs",
+      "repair_item": "immersive_weathering:end_stone_brick"
+    },
+    "minecraft:end_stone_brick_wall": {
+      "next_stage": "immersive_weathering:cracked_end_stone_brick_wall",
+      "repair_item": "immersive_weathering:end_stone_brick"
+    },
+    "minecraft:end_stone_bricks": {
+      "next_stage": "immersive_weathering:cracked_end_stone_bricks",
+      "repair_item": "immersive_weathering:end_stone_brick"
+    },
+    "minecraft:nether_brick_slab": {
+      "next_stage": "immersive_weathering:cracked_nether_brick_slab",
+      "repair_item": "minecraft:nether_brick"
+    },
+    "minecraft:nether_brick_stairs": {
+      "next_stage": "immersive_weathering:cracked_nether_brick_stairs",
+      "repair_item": "minecraft:nether_brick"
+    },
+    "minecraft:nether_brick_wall": {
+      "next_stage": "immersive_weathering:cracked_nether_brick_wall",
+      "repair_item": "minecraft:nether_brick"
+    },
+    "minecraft:nether_bricks": {
+      "next_stage": "minecraft:cracked_nether_bricks",
+      "repair_item": "minecraft:nether_brick"
+    },
+    "minecraft:polished_blackstone_brick_slab": {
+      "next_stage": "immersive_weathering:cracked_polished_blackstone_brick_slab",
+      "repair_item": "immersive_weathering:blackstone_brick"
+    },
+    "minecraft:polished_blackstone_brick_stairs": {
+      "next_stage": "immersive_weathering:cracked_polished_blackstone_brick_stairs",
+      "repair_item": "immersive_weathering:blackstone_brick"
+    },
+    "minecraft:polished_blackstone_brick_wall": {
+      "next_stage": "immersive_weathering:cracked_polished_blackstone_brick_wall",
+      "repair_item": "immersive_weathering:blackstone_brick"
+    },
+    "minecraft:polished_blackstone_bricks": {
+      "next_stage": "minecraft:cracked_polished_blackstone_bricks",
+      "repair_item": "immersive_weathering:blackstone_brick"
+    },
+    "minecraft:prismarine_brick_slab": {
+      "next_stage": "immersive_weathering:cracked_prismarine_brick_slab",
+      "repair_item": "immersive_weathering:prismarine_brick"
+    },
+    "minecraft:prismarine_brick_stairs": {
+      "next_stage": "immersive_weathering:cracked_prismarine_brick_stairs",
+      "repair_item": "immersive_weathering:prismarine_brick"
+    },
+    "minecraft:prismarine_bricks": {
+      "next_stage": "immersive_weathering:cracked_prismarine_bricks",
+      "repair_item": "immersive_weathering:prismarine_brick"
+    },
+    "minecraft:stone_brick_slab": {
+      "next_stage": "immersive_weathering:cracked_stone_brick_slab",
+      "repair_item": "immersive_weathering:stone_brick"
+    },
+    "minecraft:stone_brick_stairs": {
+      "next_stage": "immersive_weathering:cracked_stone_brick_stairs",
+      "repair_item": "immersive_weathering:stone_brick"
+    },
+    "minecraft:stone_brick_wall": {
+      "next_stage": "immersive_weathering:cracked_stone_brick_wall",
+      "repair_item": "immersive_weathering:stone_brick"
+    },
+    "minecraft:stone_bricks": {
+      "next_stage": "minecraft:cracked_stone_bricks",
+      "repair_item": "immersive_weathering:stone_brick"
+    }
+  }
+}

@@ -1,0 +1,146 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "immersive_weathering:block/ivy_ceiling",
+        "uvlock": true
+      },
+      "when": {
+        "up": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "immersive_weathering:block/ivy_ceiling",
+        "uvlock": true
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "immersive_weathering:block/ivy"
+      },
+      "when": {
+        "north": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "immersive_weathering:block/ivy"
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "immersive_weathering:block/ivy",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "west": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "immersive_weathering:block/ivy",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "immersive_weathering:block/ivy",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "south": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "immersive_weathering:block/ivy",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "immersive_weathering:block/ivy",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "east": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "immersive_weathering:block/ivy",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "immersive_weathering:block/ivy_ground",
+        "uvlock": true
+      },
+      "when": {
+        "down": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "immersive_weathering:block/ivy_ground",
+        "uvlock": true
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "up": "false",
+        "west": "false"
+      }
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "values": [
+    "minecraft:swamp",
+    "minecraft:jungle",
+    "minecraft:sparse_jungle",
+    "#c:is_wet/overworld"
+  ]
+}

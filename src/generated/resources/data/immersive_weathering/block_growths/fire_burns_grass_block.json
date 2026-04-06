@@ -1,0 +1,99 @@
+{
+  "growth_chance": 0.05,
+  "growth_for_face": [
+    {
+      "direction": "up",
+      "growth": [
+        {
+          "data": {
+            "block": {
+              "Name": "minecraft:dirt"
+            }
+          },
+          "weight": 1
+        }
+      ],
+      "weight": 1
+    },
+    {
+      "direction": "down",
+      "growth": [
+        {
+          "data": {
+            "block": {
+              "Name": "minecraft:dirt"
+            }
+          },
+          "weight": 1
+        }
+      ],
+      "weight": 1
+    },
+    {
+      "direction": "north",
+      "growth": [
+        {
+          "data": {
+            "block": {
+              "Name": "minecraft:dirt"
+            }
+          },
+          "weight": 1
+        }
+      ],
+      "weight": 1
+    },
+    {
+      "direction": "south",
+      "growth": [
+        {
+          "data": {
+            "block": {
+              "Name": "minecraft:dirt"
+            }
+          },
+          "weight": 1
+        }
+      ],
+      "weight": 1
+    },
+    {
+      "direction": "west",
+      "growth": [
+        {
+          "data": {
+            "block": {
+              "Name": "minecraft:dirt"
+            }
+          },
+          "weight": 1
+        }
+      ],
+      "weight": 1
+    },
+    {
+      "direction": "east",
+      "growth": [
+        {
+          "data": {
+            "block": {
+              "Name": "minecraft:dirt"
+            }
+          },
+          "weight": 1
+        }
+      ],
+      "weight": 1
+    }
+  ],
+  "owners": "#minecraft:fire",
+  "replacing_target": {
+    "block": "minecraft:grass_block",
+    "predicate_type": "minecraft:block_match"
+  },
+  "tick_sources": [
+    "rain",
+    "snow",
+    "clear_sky"
+  ]
+}

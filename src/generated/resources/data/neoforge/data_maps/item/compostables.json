@@ -1,0 +1,28 @@
+{
+  "values": {
+    "immersive_weathering:azalea_flower_pile": {
+      "chance": 0.3
+    },
+    "immersive_weathering:azalea_flowers": {
+      "chance": 0.5
+    },
+    "immersive_weathering:dune_grass": {
+      "chance": 0.3
+    },
+    "immersive_weathering:flower_crown": {
+      "chance": 0.8
+    },
+    "immersive_weathering:ivy": {
+      "chance": 0.3
+    },
+    "immersive_weathering:moss_clump": {
+      "chance": 0.5
+    },
+    "immersive_weathering:mulch_block": {
+      "chance": 1.0
+    },
+    "immersive_weathering:weeds": {
+      "chance": 0.3
+    }
+  }
+}

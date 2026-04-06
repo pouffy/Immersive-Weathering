@@ -1,0 +1,13 @@
+{
+  "values": {
+    "immersive_weathering:azalea_leaf_pile": {
+      "next_stage": "immersive_weathering:flowering_azalea_leaf_pile"
+    },
+    "minecraft:azalea": {
+      "next_stage": "minecraft:flowering_azalea"
+    },
+    "minecraft:azalea_leaves": {
+      "next_stage": "minecraft:flowering_azalea_leaves"
+    }
+  }
+}

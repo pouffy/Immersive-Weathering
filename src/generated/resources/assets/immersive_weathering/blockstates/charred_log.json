@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "axis=x,smoldering=false": {
+      "model": "immersive_weathering:block/charred_log_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=x,smoldering=true": {
+      "model": "immersive_weathering:block/charred_log_horizontal_lit",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y,smoldering=false": {
+      "model": "immersive_weathering:block/charred_log"
+    },
+    "axis=y,smoldering=true": {
+      "model": "immersive_weathering:block/charred_log_lit"
+    },
+    "axis=z,smoldering=false": {
+      "model": "immersive_weathering:block/charred_log_horizontal",
+      "x": 90
+    },
+    "axis=z,smoldering=true": {
+      "model": "immersive_weathering:block/charred_log_horizontal_lit",
+      "x": 90
+    }
+  }
+}

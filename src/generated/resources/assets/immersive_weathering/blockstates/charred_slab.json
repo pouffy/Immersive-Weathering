@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "smoldering=false,type=bottom": {
+      "model": "immersive_weathering:block/charred_slab"
+    },
+    "smoldering=false,type=double": {
+      "model": "immersive_weathering:block/charred_planks"
+    },
+    "smoldering=false,type=top": {
+      "model": "immersive_weathering:block/charred_slab_top"
+    },
+    "smoldering=true,type=bottom": {
+      "model": "immersive_weathering:block/charred_slab_lit"
+    },
+    "smoldering=true,type=double": {
+      "model": "immersive_weathering:block/charred_planks_lit"
+    },
+    "smoldering=true,type=top": {
+      "model": "immersive_weathering:block/charred_slab_top_lit"
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "values": {
+    "immersive_weathering:stone_wall": {
+      "next_stage": "immersive_weathering:snowy_stone_wall"
+    },
+    "minecraft:chiseled_stone_bricks": {
+      "next_stage": "immersive_weathering:snowy_chiseled_stone_bricks"
+    },
+    "minecraft:cobblestone": {
+      "next_stage": "immersive_weathering:snowy_cobblestone"
+    },
+    "minecraft:cobblestone_slab": {
+      "next_stage": "immersive_weathering:snowy_cobblestone_slab"
+    },
+    "minecraft:cobblestone_stairs": {
+      "next_stage": "immersive_weathering:snowy_cobblestone_stairs"
+    },
+    "minecraft:cobblestone_wall": {
+      "next_stage": "immersive_weathering:snowy_cobblestone_wall"
+    },
+    "minecraft:stone": {
+      "next_stage": "immersive_weathering:snowy_stone"
+    },
+    "minecraft:stone_brick_slab": {
+      "next_stage": "immersive_weathering:snowy_stone_brick_slab"
+    },
+    "minecraft:stone_brick_stairs": {
+      "next_stage": "immersive_weathering:snowy_stone_brick_stairs"
+    },
+    "minecraft:stone_brick_wall": {
+      "next_stage": "immersive_weathering:snowy_stone_brick_wall"
+    },
+    "minecraft:stone_bricks": {
+      "next_stage": "immersive_weathering:snowy_stone_bricks"
+    },
+    "minecraft:stone_slab": {
+      "next_stage": "immersive_weathering:snowy_stone_slab"
+    },
+    "minecraft:stone_stairs": {
+      "next_stage": "immersive_weathering:snowy_stone_stairs"
+    }
+  }
+}

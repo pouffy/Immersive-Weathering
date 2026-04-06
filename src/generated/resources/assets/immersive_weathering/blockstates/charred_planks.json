@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "smoldering=false": {
+      "model": "immersive_weathering:block/charred_planks"
+    },
+    "smoldering=true": {
+      "model": "immersive_weathering:block/charred_planks_lit"
+    }
+  }
+}

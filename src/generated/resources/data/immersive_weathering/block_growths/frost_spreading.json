@@ -1,0 +1,181 @@
+{
+  "area_condition": {
+    "type": "generate_if_not_too_many",
+    "must_have": {
+      "block": "immersive_weathering:frost",
+      "predicate_type": "minecraft:block_match"
+    },
+    "must_not_have": {
+      "predicate_type": "minecraft:tag_match",
+      "tag": "immersive_weathering:magma_source"
+    },
+    "radiusX": 2,
+    "radiusY": 2,
+    "radiusZ": 2,
+    "requiredAmount": 5
+  },
+  "growth_chance": 0.0,
+  "growth_for_face": [
+    {
+      "direction": "up",
+      "growth": [
+        {
+          "data": {
+            "block": {
+              "Name": "immersive_weathering:frost",
+              "Properties": {
+                "down": "true",
+                "east": "false",
+                "natural": "true",
+                "north": "false",
+                "south": "false",
+                "up": "false",
+                "west": "false"
+              }
+            }
+          },
+          "weight": 1
+        }
+      ],
+      "weight": 1
+    },
+    {
+      "direction": "down",
+      "growth": [
+        {
+          "data": {
+            "block": {
+              "Name": "immersive_weathering:frost",
+              "Properties": {
+                "down": "true",
+                "east": "false",
+                "natural": "true",
+                "north": "false",
+                "south": "false",
+                "up": "false",
+                "west": "false"
+              }
+            }
+          },
+          "weight": 1
+        }
+      ],
+      "weight": 1
+    },
+    {
+      "direction": "north",
+      "growth": [
+        {
+          "data": {
+            "block": {
+              "Name": "immersive_weathering:frost",
+              "Properties": {
+                "down": "true",
+                "east": "false",
+                "natural": "true",
+                "north": "false",
+                "south": "false",
+                "up": "false",
+                "west": "false"
+              }
+            }
+          },
+          "weight": 1
+        }
+      ],
+      "weight": 1
+    },
+    {
+      "direction": "south",
+      "growth": [
+        {
+          "data": {
+            "block": {
+              "Name": "immersive_weathering:frost",
+              "Properties": {
+                "down": "true",
+                "east": "false",
+                "natural": "true",
+                "north": "false",
+                "south": "false",
+                "up": "false",
+                "west": "false"
+              }
+            }
+          },
+          "weight": 1
+        }
+      ],
+      "weight": 1
+    },
+    {
+      "direction": "west",
+      "growth": [
+        {
+          "data": {
+            "block": {
+              "Name": "immersive_weathering:frost",
+              "Properties": {
+                "down": "true",
+                "east": "false",
+                "natural": "true",
+                "north": "false",
+                "south": "false",
+                "up": "false",
+                "west": "false"
+              }
+            }
+          },
+          "weight": 1
+        }
+      ],
+      "weight": 1
+    },
+    {
+      "direction": "east",
+      "growth": [
+        {
+          "data": {
+            "block": {
+              "Name": "immersive_weathering:frost",
+              "Properties": {
+                "down": "true",
+                "east": "false",
+                "natural": "true",
+                "north": "false",
+                "south": "false",
+                "up": "false",
+                "west": "false"
+              }
+            }
+          },
+          "weight": 1
+        }
+      ],
+      "weight": 1
+    }
+  ],
+  "owners": [
+    "minecraft:stone",
+    "minecraft:grass_block",
+    "immersive_weathering:rooted_grass_block"
+  ],
+  "position_predicates": [
+    {
+      "type": "biome_match",
+      "biomes": "#immersive_weathering:icy"
+    },
+    {
+      "type": "day_test",
+      "day": false
+    }
+  ],
+  "replacing_target": {
+    "blocks": "minecraft:air",
+    "predicate_type": "immersive_weathering:block_set_match",
+    "probability": 0.4
+  },
+  "tick_sources": [
+    "block_tick"
+  ]
+}

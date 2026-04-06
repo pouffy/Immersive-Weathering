@@ -1,0 +1,31 @@
+package io.github.pouffy.immersive_weathering.data.position_tests;
+
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.biome.Biome;
+
+import java.util.function.Supplier;
+
+public record IsDayTest(boolean day) implements IPositionRuleTest {
+
+    public static final String NAME = "day_test";
+    public static final MapCodec<IsDayTest> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
+            Codec.BOOL.fieldOf("day").forGetter(IsDayTest::day)
+    ).apply(instance, IsDayTest::new));
+    static final Type<IsDayTest> TYPE =
+            new Type<>(IsDayTest.CODEC, IsDayTest.NAME);
+
+    @Override
+    public Type<IsDayTest> getType() {
+        return TYPE;
+    }
+
+    @Override
+    public boolean test(Supplier<Holder<Biome>> biome, BlockPos pos, Level level) {
+        return level.isDay() == day;
+    }
+}

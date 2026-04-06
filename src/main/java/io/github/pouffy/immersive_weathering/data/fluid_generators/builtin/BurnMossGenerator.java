@@ -1,0 +1,66 @@
+package io.github.pouffy.immersive_weathering.data.fluid_generators.builtin;
+
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import io.github.pouffy.immersive_weathering.blocks.mossy.IMossy;
+import io.github.pouffy.immersive_weathering.data.fluid_generators.IFluidGenerator;
+import io.github.pouffy.immersive_weathering.datamaps.DataMapHelpers;
+import io.github.pouffy.immersive_weathering.datamaps.Mossable;
+import io.github.pouffy.immersive_weathering.util.Weatherable;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.Fluid;
+import net.minecraft.world.level.material.Fluids;
+
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+
+public class BurnMossGenerator implements IFluidGenerator {
+
+
+    public static final BurnMossGenerator INSTANCE = new BurnMossGenerator();
+
+    public static final MapCodec<BurnMossGenerator> CODEC = MapCodec.unit(() -> INSTANCE);
+
+    public static final IFluidGenerator.Type<BurnMossGenerator> TYPE = new IFluidGenerator.Type<>(CODEC, "burn_moss");
+
+
+    @Override
+    public Optional<BlockPos> tryGenerating(List<Direction> possibleFlowDir, BlockPos pos, Level level,
+                                            Map<Direction, BlockState> neighborCache) {
+
+        for (Direction d : possibleFlowDir) {
+            BlockPos p = pos.relative(d);
+            BlockState state = neighborCache.computeIfAbsent(d, c -> level.getBlockState(p));
+            var s = DataMapHelpers.getPrevious(DataMapHelpers.Type.MOSS, state).get();
+            if (s != state) {
+                level.setBlockAndUpdate(p, s.setValue(IMossy.WEATHERABLE, Weatherable.WeatheringState.STABLE));
+                return Optional.of(p);
+            }
+        }
+        return Optional.empty();
+    }
+
+    @Override
+    public Fluid getFluid() {
+        return Fluids.LAVA;
+    }
+
+    @Override
+    public FluidType getFluidType() {
+        return FluidType.BOTH;
+    }
+
+    @Override
+    public Type<?> getType() {
+        return TYPE;
+    }
+
+    @Override
+    public int getPriority() {
+        return 0;
+    }
+}

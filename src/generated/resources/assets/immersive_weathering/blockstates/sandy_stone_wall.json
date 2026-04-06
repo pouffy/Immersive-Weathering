@@ -1,0 +1,194 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "immersive_weathering:block/sandy_stone_wall_wall_post"
+      },
+      "when": {
+        "sandiness": "0",
+        "up": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "immersive_weathering:block/sandy_stone_wall_wall_side",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "east": "low",
+        "sandiness": "0"
+      }
+    },
+    {
+      "apply": {
+        "model": "immersive_weathering:block/sandy_stone_wall_wall_side_tall",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "east": "tall",
+        "sandiness": "0"
+      }
+    },
+    {
+      "apply": {
+        "model": "immersive_weathering:block/sandy_stone_wall_wall_side",
+        "uvlock": true
+      },
+      "when": {
+        "north": "low",
+        "sandiness": "0"
+      }
+    },
+    {
+      "apply": {
+        "model": "immersive_weathering:block/sandy_stone_wall_wall_side_tall",
+        "uvlock": true
+      },
+      "when": {
+        "north": "tall",
+        "sandiness": "0"
+      }
+    },
+    {
+      "apply": {
+        "model": "immersive_weathering:block/sandy_stone_wall_wall_side",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "sandiness": "0",
+        "south": "low"
+      }
+    },
+    {
+      "apply": {
+        "model": "immersive_weathering:block/sandy_stone_wall_wall_side_tall",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "sandiness": "0",
+        "south": "tall"
+      }
+    },
+    {
+      "apply": {
+        "model": "immersive_weathering:block/sandy_stone_wall_wall_side",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "sandiness": "0",
+        "west": "low"
+      }
+    },
+    {
+      "apply": {
+        "model": "immersive_weathering:block/sandy_stone_wall_wall_side_tall",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "sandiness": "0",
+        "west": "tall"
+      }
+    },
+    {
+      "apply": {
+        "model": "immersive_weathering:block/sandy_stone_wall_wall_post"
+      },
+      "when": {
+        "sandiness": "1",
+        "up": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "immersive_weathering:block/sandy_stone_wall_wall_side",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "east": "low",
+        "sandiness": "1"
+      }
+    },
+    {
+      "apply": {
+        "model": "immersive_weathering:block/sandy_stone_wall_wall_side_tall",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "east": "tall",
+        "sandiness": "1"
+      }
+    },
+    {
+      "apply": {
+        "model": "immersive_weathering:block/sandy_stone_wall_wall_side",
+        "uvlock": true
+      },
+      "when": {
+        "north": "low",
+        "sandiness": "1"
+      }
+    },
+    {
+      "apply": {
+        "model": "immersive_weathering:block/sandy_stone_wall_wall_side_tall",
+        "uvlock": true
+      },
+      "when": {
+        "north": "tall",
+        "sandiness": "1"
+      }
+    },
+    {
+      "apply": {
+        "model": "immersive_weathering:block/sandy_stone_wall_wall_side",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "sandiness": "1",
+        "south": "low"
+      }
+    },
+    {
+      "apply": {
+        "model": "immersive_weathering:block/sandy_stone_wall_wall_side_tall",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "sandiness": "1",
+        "south": "tall"
+      }
+    },
+    {
+      "apply": {
+        "model": "immersive_weathering:block/sandy_stone_wall_wall_side",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "sandiness": "1",
+        "west": "low"
+      }
+    },
+    {
+      "apply": {
+        "model": "immersive_weathering:block/sandy_stone_wall_wall_side_tall",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "sandiness": "1",
+        "west": "tall"
+      }
+    }
+  ]
+}

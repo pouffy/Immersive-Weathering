@@ -1,0 +1,9 @@
+{
+  "values": [
+    "#c:is_badlands",
+    "minecraft:badlands",
+    "minecraft:eroded_badlands",
+    "minecraft:wooded_badlands",
+    "minecraft:desert"
+  ]
+}
