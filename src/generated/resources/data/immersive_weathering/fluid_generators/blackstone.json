@@ -1,0 +1,24 @@
+{
+  "type": "target_self",
+  "adjacent_blocks": {
+    "sides": [
+      {
+        "block_state": {
+          "Name": "minecraft:magma_block"
+        },
+        "predicate_type": "minecraft:blockstate_match"
+      },
+      {
+        "block_state": {
+          "Name": "minecraft:blue_ice"
+        },
+        "predicate_type": "minecraft:blockstate_match"
+      }
+    ]
+  },
+  "fluid": "minecraft:lava",
+  "generate": {
+    "Name": "minecraft:blackstone"
+  },
+  "priority": 1
+}

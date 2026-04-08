@@ -1,0 +1,22 @@
+{
+  "type": "target_self",
+  "adjacent_blocks": {
+    "sides": [
+      {
+        "block_state": {
+          "Name": "minecraft:soul_fire"
+        },
+        "predicate_type": "minecraft:blockstate_match"
+      },
+      {
+        "predicate_type": "immersive_weathering:fluid_tag_match",
+        "tag": "minecraft:water"
+      }
+    ]
+  },
+  "fluid": "minecraft:lava",
+  "fluid_type": "still",
+  "generate": {
+    "Name": "minecraft:crying_obsidian"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "type": "target_self",
+  "adjacent_blocks": {
+    "any": [
+      {
+        "block_state": {
+          "Name": "minecraft:magma_block"
+        },
+        "predicate_type": "minecraft:blockstate_match"
+      },
+      {
+        "block_state": {
+          "Name": "minecraft:blue_ice"
+        },
+        "predicate_type": "minecraft:blockstate_match"
+      }
+    ],
+    "sides": [
+      {
+        "block_state": {
+          "Name": "minecraft:bone_block",
+          "Properties": {
+            "axis": "y"
+          }
+        },
+        "predicate_type": "minecraft:blockstate_match"
+      }
+    ]
+  },
+  "fluid": "minecraft:lava",
+  "generate": {
+    "Name": "minecraft:calcite"
+  }
+}

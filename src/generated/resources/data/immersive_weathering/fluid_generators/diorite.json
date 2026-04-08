@@ -1,0 +1,22 @@
+{
+  "type": "target_self",
+  "adjacent_blocks": {
+    "any": [
+      {
+        "predicate_type": "immersive_weathering:fluid_tag_match",
+        "tag": "minecraft:water"
+      }
+    ],
+    "sides": [
+      {
+        "predicate_type": "minecraft:tag_match",
+        "tag": "immersive_weathering:quartz_blocks"
+      }
+    ]
+  },
+  "fluid": "minecraft:lava",
+  "generate": {
+    "Name": "minecraft:diorite"
+  },
+  "priority": 1
+}

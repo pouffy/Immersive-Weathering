@@ -1,11 +1,9 @@
 package io.github.pouffy.immersive_weathering.data.fluid_generators.builtin;
 
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import io.github.pouffy.immersive_weathering.blocks.mossy.IMossy;
 import io.github.pouffy.immersive_weathering.data.fluid_generators.IFluidGenerator;
 import io.github.pouffy.immersive_weathering.datamaps.DataMapHelpers;
-import io.github.pouffy.immersive_weathering.datamaps.Mossable;
 import io.github.pouffy.immersive_weathering.util.Weatherable;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -29,15 +27,16 @@ public class BurnMossGenerator implements IFluidGenerator {
 
 
     @Override
-    public Optional<BlockPos> tryGenerating(List<Direction> possibleFlowDir, BlockPos pos, Level level,
-                                            Map<Direction, BlockState> neighborCache) {
-
+    public Optional<BlockPos> tryGenerating(List<Direction> possibleFlowDir, BlockPos pos, Level level, Map<Direction, BlockState> neighborCache) {
         for (Direction d : possibleFlowDir) {
             BlockPos p = pos.relative(d);
             BlockState state = neighborCache.computeIfAbsent(d, c -> level.getBlockState(p));
-            var s = DataMapHelpers.getPrevious(DataMapHelpers.Type.MOSS, state).get();
-            if (s != state) {
-                level.setBlockAndUpdate(p, s.setValue(IMossy.WEATHERABLE, Weatherable.WeatheringState.STABLE));
+            var previous = DataMapHelpers.getPrevious(DataMapHelpers.Type.MOSS, state);
+            if (previous.isPresent() && previous.get() != state) {
+                var toSet = previous.get();
+                if (toSet.hasProperty(IMossy.WEATHERABLE))
+                    toSet.setValue(IMossy.WEATHERABLE, Weatherable.WeatheringState.STABLE);
+                level.setBlockAndUpdate(p, toSet);
                 return Optional.of(p);
             }
         }

@@ -28,6 +28,8 @@ public class ModRuleTests {
             "burnable_test", BurnableTest.CODEC);
     public static final DeferredHolder<RuleTestType<?>, RuleTestType<FluidMatchTest>> FLUID_MATCH_TEST = register(
             "fluid_match", FluidMatchTest.CODEC);
+    public static final DeferredHolder<RuleTestType<?>, RuleTestType<FluidTagMatchTest>> FLUID_TAG_MATCH_TEST = register(
+            "fluid_tag_match", FluidTagMatchTest.CODEC);
     public static final DeferredHolder<RuleTestType<?>, RuleTestType<LogMatchTest>> LOG_TEST = register(
             "tree_log", LogMatchTest.CODEC);
 

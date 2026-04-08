@@ -1,0 +1,24 @@
+{
+  "type": "target_self",
+  "adjacent_blocks": {
+    "any": [
+      {
+        "predicate_type": "immersive_weathering:fluid_tag_match",
+        "tag": "minecraft:water"
+      }
+    ],
+    "sides": [
+      {
+        "block_state": {
+          "Name": "minecraft:diorite"
+        },
+        "predicate_type": "minecraft:blockstate_match"
+      }
+    ]
+  },
+  "fluid": "minecraft:lava",
+  "generate": {
+    "Name": "minecraft:andesite"
+  },
+  "priority": 1
+}

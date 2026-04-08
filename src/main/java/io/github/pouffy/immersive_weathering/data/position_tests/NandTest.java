@@ -11,7 +11,7 @@ import net.minecraft.world.level.biome.Biome;
 import java.util.List;
 import java.util.function.Supplier;
 
-record NandTest(List<IPositionRuleTest> predicates) implements IPositionRuleTest {
+public record NandTest(List<IPositionRuleTest> predicates) implements IPositionRuleTest {
 
     public static final String NAME = "nand";
     public static final MapCodec<NandTest> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(

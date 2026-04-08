@@ -23,7 +23,7 @@ import java.util.function.Supplier;
 
 public class OtherFluidGenerator implements IFluidGenerator {
 
-    public static final MapCodec<OtherFluidGenerator> CODEC = RecordCodecBuilder.<OtherFluidGenerator>mapCodec(
+    public static final MapCodec<OtherFluidGenerator> CODEC = RecordCodecBuilder.mapCodec(
             instance -> instance.group(
                     BuiltInRegistries.FLUID.byNameCodec().fieldOf("fluid").forGetter(OtherFluidGenerator::getFluid),
                     StrOpt.of(FluidType.CODEC, "fluid_type", FluidType.BOTH).forGetter(OtherFluidGenerator::getFluidType),

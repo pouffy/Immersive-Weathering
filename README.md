@@ -13,7 +13,6 @@
 - Loot Tables
 - Recipes
 - Advancements
-- Fluid Generators
 - Block Growths
 - Block States
 - Sounds

@@ -1,0 +1,29 @@
+{
+  "type": "target_self",
+  "adjacent_blocks": {
+    "any": [
+      {
+        "predicate_type": "immersive_weathering:fluid_tag_match",
+        "tag": "minecraft:water"
+      }
+    ],
+    "down": {
+      "block_state": {
+        "Name": "minecraft:soul_soil"
+      },
+      "predicate_type": "minecraft:blockstate_match"
+    },
+    "sides": [
+      {
+        "block_state": {
+          "Name": "minecraft:blue_ice"
+        },
+        "predicate_type": "minecraft:blockstate_match"
+      }
+    ]
+  },
+  "fluid": "minecraft:lava",
+  "generate": {
+    "Name": "minecraft:smooth_basalt"
+  }
+}

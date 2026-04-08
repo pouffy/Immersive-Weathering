@@ -1,4 +1,4 @@
-package io.github.pouffy.immersive_weathering.data.block_growths.growths.data;
+package io.github.pouffy.immersive_weathering.data.block_growths.data;
 
 import io.github.pouffy.immersive_weathering.data.block_growths.BlockPair;
 import io.github.pouffy.immersive_weathering.data.block_growths.TickSource;

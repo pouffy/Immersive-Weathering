@@ -2,7 +2,7 @@ package io.github.pouffy.immersive_weathering.data.block_growths;
 
 import com.google.common.collect.Sets;
 import io.github.pouffy.immersive_weathering.data.block_growths.growths.ConfigurableBlockGrowth;
-import io.github.pouffy.immersive_weathering.data.block_growths.growths.data.GrowthOutput;
+import io.github.pouffy.immersive_weathering.data.block_growths.data.GrowthOutput;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataProvider;
@@ -50,6 +50,6 @@ public abstract class BlockGrowthProvider implements DataProvider {
 
     @Override
     public String getName() {
-        return "";
+        return "[Immersive Weathering] Block Growths";
     }
 }
