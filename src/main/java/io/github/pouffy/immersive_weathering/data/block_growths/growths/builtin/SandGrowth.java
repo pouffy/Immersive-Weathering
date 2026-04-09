@@ -1,8 +1,12 @@
 package io.github.pouffy.immersive_weathering.data.block_growths.growths.builtin;
 
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import io.github.pouffy.immersive_weathering.blocks.ModBlockProperties;
 import io.github.pouffy.immersive_weathering.blocks.sandy.ISandy;
 import io.github.pouffy.immersive_weathering.data.block_growths.TickSource;
+import io.github.pouffy.immersive_weathering.data.block_growths.growths.IBlockGrowth;
 import io.github.pouffy.immersive_weathering.datamaps.DataMapHelpers;
 import io.github.pouffy.immersive_weathering.reg.ModBlocks;
 import io.github.pouffy.immersive_weathering.reg.ModTags;
@@ -20,13 +24,35 @@ import net.minecraft.world.level.block.state.BlockState;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.function.Supplier;
 
-public class SandGrowth extends BuiltinBlockGrowth {
+public class SandGrowth implements IBlockGrowth {
 
-    protected SandGrowth(String name, @Nullable HolderSet<Block> owners, List<TickSource> sources, float chance) {
-        super(name, owners, sources, chance);
+    public static final MapCodec<SandGrowth> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
+            TickSource.CODEC.listOf().optionalFieldOf("tick_sources", List.of(TickSource.BLOCK_TICK)).forGetter(b -> b.sources),
+            Codec.FLOAT.optionalFieldOf("growth_chance", 1f).forGetter(b -> b.growthChance)
+    ).apply(instance, SandGrowth::new));
+
+    private final List<TickSource> sources;
+    protected final float growthChance;
+
+    public static final Type<SandGrowth> TYPE = new Type<>(CODEC, "sandy_stones");
+
+    public SandGrowth(List<TickSource> sources, float growthChance) {
+        this.sources = sources;
+        this.growthChance = growthChance;
+    }
+
+    @Override
+    public Type<?> getType() {
+        return TYPE;
+    }
+
+    @Override
+    public Collection<TickSource> getTickSources() {
+        return sources;
     }
 
     @Override

@@ -2,6 +2,7 @@ package io.github.pouffy.immersive_weathering.data.fluid_generators;
 
 import com.google.common.collect.Sets;
 import com.mojang.serialization.JsonOps;
+import io.github.pouffy.immersive_weathering.data.block_growths.growths.IBlockGrowth;
 import io.github.pouffy.immersive_weathering.data.fluid_generators.data.AdjacentBlocksBuilder;
 import io.github.pouffy.immersive_weathering.data.fluid_generators.data.GeneratorOutput;
 import io.github.pouffy.immersive_weathering.data.fluid_generators.data.OtherFluidGeneratorBuilder;
@@ -10,6 +11,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
+import net.minecraft.resources.RegistryOps;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -55,18 +57,14 @@ public abstract class FluidGeneratorProvider implements DataProvider {
         Set<CompletableFuture<?>> list = new HashSet<>();
         final Set<ResourceLocation> set = Sets.newHashSet();
         this.buildGenerators(new GeneratorOutput() {
-                              @Override
-                              public void accept(ResourceLocation location, IFluidGenerator generator) {
-                                  if (!set.add(location)) {
-                                      throw new IllegalStateException("Duplicate generator " + location);
-                                  } else {
-                                      IFluidGenerator.CODEC.encodeStart(JsonOps.INSTANCE, generator).ifSuccess(json -> {
-                                          list.add(DataProvider.saveStable(output, json, pathProvider.json(location)));
-                                      });
-                                  }
-                              }
-                          }, registries
-        );
+            public void accept(ResourceLocation location, IFluidGenerator generator) {
+                if (!set.add(location)) {
+                    throw new IllegalStateException("Duplicate generator " + location);
+                } else {
+                    list.add(DataProvider.saveStable(output, registries, IFluidGenerator.CODEC, generator, pathProvider.json(location)));
+                }
+            }
+        }, registries);
 
         return CompletableFuture.allOf(list.toArray(CompletableFuture[]::new));
     }

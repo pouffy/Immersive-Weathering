@@ -1,4 +1,5 @@
 {
+  "type": "configurable",
   "area_condition": {
     "type": "generate_if_not_too_many",
     "includes": "#immersive_weathering:small_plants",

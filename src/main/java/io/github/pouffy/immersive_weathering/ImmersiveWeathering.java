@@ -2,8 +2,7 @@ package io.github.pouffy.immersive_weathering;
 
 import io.github.pouffy.immersive_weathering.configs.ClientConfigs;
 import io.github.pouffy.immersive_weathering.configs.CommonConfigs;
-import io.github.pouffy.immersive_weathering.data.block_growths.BlockGrowthHandler;
-import io.github.pouffy.immersive_weathering.data.fluid_generators.FluidGeneratorsHandler;
+import io.github.pouffy.immersive_weathering.data.block_growths.growths.builtin.BuiltinGrowthsRegistry;
 import io.github.pouffy.immersive_weathering.data.fluid_generators.ModFluidGenerators;
 import io.github.pouffy.immersive_weathering.data.position_tests.ModPositionRuleTests;
 import io.github.pouffy.immersive_weathering.datagen.ImmersiveWeatheringDataGen;
@@ -99,6 +98,7 @@ public class ImmersiveWeathering {
     public static void setup() {
         ModPositionRuleTests.register();
         ModFluidGenerators.register();
+        BuiltinGrowthsRegistry.register();
     }
 
     public void registerOverrides(RegisterEvent event) {

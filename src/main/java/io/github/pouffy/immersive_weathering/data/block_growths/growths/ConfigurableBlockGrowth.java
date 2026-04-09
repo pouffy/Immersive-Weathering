@@ -3,10 +3,12 @@ package io.github.pouffy.immersive_weathering.data.block_growths.growths;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import io.github.pouffy.immersive_weathering.data.block_growths.BlockPair;
 import io.github.pouffy.immersive_weathering.data.block_growths.TickSource;
 import io.github.pouffy.immersive_weathering.data.block_growths.area_condition.AreaCondition;
+import io.github.pouffy.immersive_weathering.data.block_growths.growths.builtin.GrassBurnGrowth;
 import io.github.pouffy.immersive_weathering.data.position_tests.IPositionRuleTest;
 import io.github.pouffy.immersive_weathering.mixins.accessors.RandomBlockMatchTestAccessor;
 import net.mehvahdjukaar.moonlight.api.platform.PlatHelper;
@@ -38,7 +40,7 @@ public class ConfigurableBlockGrowth implements IBlockGrowth {
             AlwaysTrueTest.INSTANCE, AreaCondition.EMPTY, List.of(), Optional.of(HolderSet.direct(Holder.direct(Blocks.AIR))),
             List.of(), false, false);
 
-    public static final Codec<ConfigurableBlockGrowth> CODEC = RecordCodecBuilder.create(instance -> instance.group(
+    public static final MapCodec<ConfigurableBlockGrowth> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
             TickSource.CODEC.listOf().optionalFieldOf("tick_sources", List.of()).forGetter(ConfigurableBlockGrowth::getTickSources),
             Codec.FLOAT.fieldOf("growth_chance").forGetter(ConfigurableBlockGrowth::getGrowthChance),
             RuleTest.CODEC.fieldOf("replacing_target").forGetter(ConfigurableBlockGrowth::getTargetPredicate),
@@ -64,6 +66,8 @@ public class ConfigurableBlockGrowth implements IBlockGrowth {
 
     private final int maxRange;
     private final AreaCondition areaCondition;
+
+    public static final Type<ConfigurableBlockGrowth> TYPE = new Type<>(CODEC, "configurable");
 
     public ConfigurableBlockGrowth(List<TickSource> sources, float growthChance,
                                    RuleTest targetPredicate, AreaCondition areaCheck,
@@ -182,6 +186,11 @@ public class ConfigurableBlockGrowth implements IBlockGrowth {
 
     public HolderSet<Block> getOwnersHolder() {
         return this.owners;
+    }
+
+    @Override
+    public Type<?> getType() {
+        return TYPE;
     }
 
     @Nullable

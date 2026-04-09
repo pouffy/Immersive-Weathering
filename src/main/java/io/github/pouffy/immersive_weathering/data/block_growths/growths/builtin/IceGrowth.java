@@ -1,14 +1,16 @@
 package io.github.pouffy.immersive_weathering.data.block_growths.growths.builtin;
 
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import io.github.pouffy.immersive_weathering.blocks.IcicleBlock;
 import io.github.pouffy.immersive_weathering.data.block_growths.TickSource;
+import io.github.pouffy.immersive_weathering.data.block_growths.growths.IBlockGrowth;
 import io.github.pouffy.immersive_weathering.mixins.accessors.IceInvoker;
 import io.github.pouffy.immersive_weathering.reg.ModBlocks;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderSet;
+import net.minecraft.core.*;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -22,14 +24,44 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DripstoneThickness;
 
 import javax.annotation.Nullable;
+import java.util.Collection;
 import java.util.List;
 import java.util.function.Supplier;
 
-public class IceGrowth extends BuiltinBlockGrowth {
+public class IceGrowth implements IBlockGrowth {
 
+    public static final MapCodec<IceGrowth> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
+            RegistryCodecs.homogeneousList(Registries.BLOCK).optionalFieldOf("owners", HolderSet.empty()).forGetter(b -> b.owners),
+            TickSource.CODEC.listOf().optionalFieldOf("tick_sources", List.of(TickSource.BLOCK_TICK)).forGetter(b -> b.sources),
+            Codec.FLOAT.optionalFieldOf("growth_chance", 1f).forGetter(b -> b.growthChance)
+    ).apply(instance, IceGrowth::new));
 
-    public IceGrowth(String name, @Nullable HolderSet<Block> owners, List<TickSource> sources, float chance) {
-        super(name, owners, sources, chance);
+    private final HolderSet<Block> owners;
+    private final List<TickSource> sources;
+    protected final float growthChance;
+
+    public static final Type<IceGrowth> TYPE = new Type<>(CODEC, "ice_icicle_and_melt");
+
+    public IceGrowth(HolderSet<Block> owners, List<TickSource> sources, float growthChance) {
+        this.owners = owners;
+        this.sources = sources;
+        this.growthChance = growthChance;
+    }
+
+    @Override
+    public Type<?> getType() {
+        return TYPE;
+    }
+
+    @Override
+    public @Nullable Iterable<? extends Block> getOwners() {
+        if (owners.equals(HolderSet.empty())) return null;
+        return this.owners.stream().map(Holder::value).toList();
+    }
+
+    @Override
+    public Collection<TickSource> getTickSources() {
+        return sources;
     }
 
     @Override

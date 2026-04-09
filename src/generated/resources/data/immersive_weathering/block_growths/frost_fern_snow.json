@@ -1,4 +1,5 @@
 {
+  "type": "configurable",
   "area_condition": {
     "type": "neighbor_based_generation",
     "must_have": {

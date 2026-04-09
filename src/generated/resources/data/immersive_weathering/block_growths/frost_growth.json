@@ -1,4 +1,5 @@
 {
+  "type": "configurable",
   "area_condition": {
     "type": "generate_if_not_too_many",
     "must_not_have": {

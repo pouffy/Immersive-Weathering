@@ -1,4 +1,5 @@
 {
+  "type": "configurable",
   "growth_chance": 0.05,
   "growth_for_face": [
     {

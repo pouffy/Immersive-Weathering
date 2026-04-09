@@ -1,37 +1,39 @@
 package io.github.pouffy.immersive_weathering.data.block_growths.growths.builtin;
 
-import io.github.pouffy.immersive_weathering.data.block_growths.TickSource;
-import net.minecraft.core.HolderSet;
-import net.minecraft.world.level.block.Block;
+import io.github.pouffy.immersive_weathering.data.block_growths.growths.ConfigurableBlockGrowth;
+import io.github.pouffy.immersive_weathering.data.block_growths.growths.IBlockGrowth;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 public class BuiltinGrowthsRegistry {
-    static final Map<String, BuiltinGrowthFactory> BUILTIN_GROWTHS = new HashMap<>();
+
+    public static void register(){}
+
+    private static final Map<String, IBlockGrowth.Type<?>> TYPES;
 
     static {
-        register("no_op", NoOpBlockGrowth::new);
-        register("campfire_soot", CampfireSootGrowth::new);
-        register("fire_soot", FireSootGrowth::new);
-        register("ice_icicle_and_melt", IceGrowth::new);
-        register("leaf_piles_from_leaves", LeavesGrowth::new);
-        register("icicle_from_snow", SnowIcicleGrowth::new);
-        register("lightning_vitrified_sand", LightningGrowth::new);
-        register("snowy_stones", SnowGrowth::new);
-        register("sandy_stones", SandGrowth::new);
-        register("sand_layer_seeping", SandLayerGrowth::new);
+        TYPES = new HashMap<>();
+        TYPES.put(ConfigurableBlockGrowth.TYPE.name(), ConfigurableBlockGrowth.TYPE);
+        TYPES.put(CampfireSootGrowth.TYPE.name(), CampfireSootGrowth.TYPE);
+        TYPES.put(FireSootGrowth.TYPE.name(), FireSootGrowth.TYPE);
+        TYPES.put(GrassBurnGrowth.TYPE.name(), GrassBurnGrowth.TYPE);
+        TYPES.put(IceGrowth.TYPE.name(), IceGrowth.TYPE);
+        TYPES.put(LeavesGrowth.TYPE.name(), LeavesGrowth.TYPE);
+        TYPES.put(SnowIcicleGrowth.TYPE.name(), SnowIcicleGrowth.TYPE);
+        TYPES.put(LightningGrowth.TYPE.name(), LightningGrowth.TYPE);
+        TYPES.put(SnowGrowth.TYPE.name(), SnowGrowth.TYPE);
+        TYPES.put(SandGrowth.TYPE.name(), SandGrowth.TYPE);
+        TYPES.put(SandLayerGrowth.TYPE.name(), SandLayerGrowth.TYPE);
     }
 
-
-    public static void register(String name, BuiltinGrowthFactory factory) {
-        BUILTIN_GROWTHS.put(name,factory);
+    public static Optional<? extends IBlockGrowth.Type<? extends IBlockGrowth>> get(String name) {
+        return Optional.ofNullable(TYPES.get(name));
     }
 
-
-    @FunctionalInterface
-    public interface BuiltinGrowthFactory{
-        BuiltinBlockGrowth create(String name, HolderSet<Block> owners, List<TickSource> source, float chance);
+    public static <B extends IBlockGrowth.Type<?>> B register(B newType){
+        TYPES.put(newType.name(), newType);
+        return newType;
     }
 }

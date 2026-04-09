@@ -5,14 +5,10 @@ import com.google.common.collect.Maps;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.JsonOps;
 import io.github.pouffy.immersive_weathering.ImmersiveWeathering;
 import io.github.pouffy.immersive_weathering.configs.CommonConfigs;
-import io.github.pouffy.immersive_weathering.data.block_growths.growths.ConfigurableBlockGrowth;
 import io.github.pouffy.immersive_weathering.data.block_growths.growths.IBlockGrowth;
-import io.github.pouffy.immersive_weathering.data.block_growths.growths.builtin.BuiltinBlockGrowth;
 import io.github.pouffy.immersive_weathering.data.block_growths.growths.builtin.NoOpBlockGrowth;
 import net.mehvahdjukaar.moonlight.api.misc.RegistryAccessJsonReloadListener;
 import net.minecraft.core.BlockPos;
@@ -28,7 +24,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.LevelChunk;
 import net.minecraft.world.level.levelgen.Heightmap;
 
-import java.io.FileWriter;
 import java.util.*;
 import java.util.function.Supplier;
 
@@ -117,13 +112,10 @@ public class BlockGrowthHandler extends RegistryAccessJsonReloadListener {
             if (CommonConfigs.DISABLED_GROWTHS.get().contains(name.toLowerCase(Locale.ROOT))) continue;
 
             var json = e.getValue();
-            DataResult<? extends IBlockGrowth> result;
-            if (json instanceof JsonObject jo && jo.has("builtin")) {
-                result = BuiltinBlockGrowth.CODEC.parse(RegistryOps.create(JsonOps.INSTANCE, registryAccess), json);
-            } else {
-                result = ConfigurableBlockGrowth.CODEC.parse(RegistryOps.create(JsonOps.INSTANCE, registryAccess), json);
-            }
+
+            var result = IBlockGrowth.CODEC.parse(RegistryOps.create(JsonOps.INSTANCE, registryAccess), json);
             var o = result.resultOrPartial(error -> ImmersiveWeathering.LOGGER.error("Failed to read block growth JSON object for {} : {}", e.getKey(), error));
+
             if (o.isPresent()) {
                 IBlockGrowth g = o.get();
                 if (!(g instanceof NoOpBlockGrowth)) {
@@ -156,28 +148,5 @@ public class BlockGrowthHandler extends RegistryAccessJsonReloadListener {
 
             }
         }
-    }
-
-    //debug
-
-    private void writeToFile(final ConfigurableBlockGrowth obj, FileWriter writer) {
-        DataResult<JsonElement> r = ConfigurableBlockGrowth.CODEC.encodeStart(JsonOps.INSTANCE, obj);
-        r.result().ifPresent(a -> GSON.toJson(sortJson(a.getAsJsonObject()), writer));
-    }
-
-    private JsonObject sortJson(JsonObject jsonObject) {
-        try {
-            Map<String, JsonElement> joToMap = new TreeMap<>();
-            jsonObject.entrySet().forEach(e -> {
-                var j = e.getValue();
-                if (j instanceof JsonObject jo) j = sortJson(jo);
-                joToMap.put(e.getKey(), j);
-            });
-            JsonObject sortedJSON = new JsonObject();
-            joToMap.forEach(sortedJSON::add);
-            return sortedJSON;
-        } catch (Exception ignored) {
-        }
-        return jsonObject;
     }
 }

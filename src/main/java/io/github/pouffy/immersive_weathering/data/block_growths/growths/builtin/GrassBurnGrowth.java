@@ -3,17 +3,20 @@ package io.github.pouffy.immersive_weathering.data.block_growths.growths.builtin
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.github.pouffy.immersive_weathering.blocks.IcicleBlock;
 import io.github.pouffy.immersive_weathering.data.block_growths.TickSource;
 import io.github.pouffy.immersive_weathering.data.block_growths.growths.IBlockGrowth;
-import io.github.pouffy.immersive_weathering.reg.ModBlocks;
 import io.github.pouffy.immersive_weathering.util.WeatheringHelper;
-import net.minecraft.core.*;
+import net.mehvahdjukaar.moonlight.api.platform.PlatHelper;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
+import net.minecraft.core.HolderSet;
+import net.minecraft.core.RegistryCodecs;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 
 import javax.annotation.Nullable;
@@ -21,24 +24,21 @@ import java.util.Collection;
 import java.util.List;
 import java.util.function.Supplier;
 
-public class SnowIcicleGrowth implements IBlockGrowth {
+public class GrassBurnGrowth implements IBlockGrowth {
 
-    public static final MapCodec<SnowIcicleGrowth> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
+    public static final MapCodec<GrassBurnGrowth> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
             RegistryCodecs.homogeneousList(Registries.BLOCK).optionalFieldOf("owners", HolderSet.empty()).forGetter(b -> b.owners),
-            TickSource.CODEC.listOf().optionalFieldOf("tick_sources", List.of(TickSource.BLOCK_TICK)).forGetter(b -> b.sources),
-            Codec.FLOAT.optionalFieldOf("growth_chance", 1f).forGetter(b -> b.growthChance)
-    ).apply(instance, SnowIcicleGrowth::new));
+            TickSource.CODEC.listOf().optionalFieldOf("tick_sources", List.of(TickSource.BLOCK_TICK)).forGetter(b -> b.sources)
+    ).apply(instance, GrassBurnGrowth::new));
 
     private final HolderSet<Block> owners;
     private final List<TickSource> sources;
-    protected final float growthChance;
 
-    public static final Type<SnowIcicleGrowth> TYPE = new Type<>(CODEC, "icicle_from_snow");
+    public static final Type<GrassBurnGrowth> TYPE = new Type<>(CODEC, "grass_burning");
 
-    public SnowIcicleGrowth(HolderSet<Block> owners, List<TickSource> sources, float growthChance) {
+    public GrassBurnGrowth(HolderSet<Block> owners, List<TickSource> sources) {
         this.owners = owners;
         this.sources = sources;
-        this.growthChance = growthChance;
     }
 
     @Override
@@ -59,18 +59,10 @@ public class SnowIcicleGrowth implements IBlockGrowth {
 
     @Override
     public void tryGrowing(BlockPos pos, BlockState state, ServerLevel level, Supplier<Holder<Biome>> biome) {
-        if (!(growthChance == 1 || level.random.nextFloat() < growthChance)) return;
-
-        if (WeatheringHelper.isIciclePos(pos)) {
-            BlockPos p = pos.below(state.is(BlockTags.SNOW) ? 2 : 1);
-            BlockState placement = ModBlocks.ICICLE.get().defaultBlockState().setValue(IcicleBlock.TIP_DIRECTION, Direction.DOWN);
-            if (level.getBlockState(p).isAir() && placement.canSurvive(level, p)) {
-                if (Direction.Plane.HORIZONTAL.stream().anyMatch(d -> {
-                    BlockPos rel = p.relative(d);
-                    return level.canSeeSky(rel) && level.getBlockState(rel).isAir();
-                })) {
-                    level.setBlockAndUpdate(p, placement);
-                }
+        if (level.random.nextFloat() < 0.1f) {
+            if (!PlatHelper.isAreaLoaded(level,pos, 1)) return;
+            if (WeatheringHelper.hasEnoughBlocksFacingMe(pos, level, b -> b.is(BlockTags.FIRE), 1)) {
+                level.setBlockAndUpdate(pos, Blocks.DIRT.defaultBlockState());
             }
         }
     }
