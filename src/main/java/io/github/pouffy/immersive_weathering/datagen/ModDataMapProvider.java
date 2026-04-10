@@ -48,6 +48,10 @@ public class ModDataMapProvider extends DataMapProvider {
         crack(crackables,   () -> Blocks.STONE_BRICK_STAIRS,                      ModBlocks.CRACKED_STONE_BRICK_STAIRS,                   ModItems.STONE_BRICK);
         crack(crackables,   () -> Blocks.STONE_BRICK_SLAB,                        ModBlocks.CRACKED_STONE_BRICK_SLAB,                     ModItems.STONE_BRICK);
         crack(crackables,   () -> Blocks.STONE_BRICK_WALL,                        ModBlocks.CRACKED_STONE_BRICK_WALL,                     ModItems.STONE_BRICK);
+        crack(crackables,   () -> Blocks.TUFF_BRICKS,                             ModBlocks.CRACKED_TUFF_BRICKS,                          ModItems.TUFF_BRICK);
+        crack(crackables,   () -> Blocks.TUFF_BRICK_STAIRS,                       ModBlocks.CRACKED_TUFF_BRICK_STAIRS,                    ModItems.TUFF_BRICK);
+        crack(crackables,   () -> Blocks.TUFF_BRICK_SLAB,                         ModBlocks.CRACKED_TUFF_BRICK_SLAB,                      ModItems.TUFF_BRICK);
+        crack(crackables,   () -> Blocks.TUFF_BRICK_WALL,                         ModBlocks.CRACKED_TUFF_BRICK_WALL,                      ModItems.TUFF_BRICK);
         crack(crackables,   () -> Blocks.BRICKS,                                  ModBlocks.CRACKED_BRICKS,                            () -> Items.BRICK);
         crack(crackables,   () -> Blocks.BRICK_STAIRS,                            ModBlocks.CRACKED_BRICK_STAIRS,                      () -> Items.BRICK);
         crack(crackables,   () -> Blocks.BRICK_SLAB,                              ModBlocks.CRACKED_BRICK_SLAB,                        () -> Items.BRICK);

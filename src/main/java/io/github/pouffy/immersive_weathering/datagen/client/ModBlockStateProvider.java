@@ -44,6 +44,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         layered(ModBlocks.SAND_LAYER_BLOCK, "minecraft:block/sand");
         layered(ModBlocks.RED_SAND_LAYER_BLOCK, "minecraft:block/red_sand");
         createMultiface(ModBlocks.FROST.get());
+        createMultiface(ModBlocks.SOOT.get());
         charredLog(ModBlocks.CHARRED_LOG.get());
         charredPlanks(ModBlocks.CHARRED_PLANKS.get());
         charredSlab(ModBlocks.CHARRED_SLAB.get(), ModBlocks.CHARRED_PLANKS);
@@ -73,6 +74,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         cubeSideBottomTop(ModBlocks.SNOWY_STONE, ResourceLocation.parse("minecraft:block/snow"), ImmersiveWeathering.res("block/snowy_stone_side"), ResourceLocation.withDefaultNamespace("block/stone"));
         sidedStairs(ModBlocks.SNOWY_STONE_STAIRS, ImmersiveWeathering.res("block/snowy_stone_side"), ResourceLocation.parse("minecraft:block/snow"), ResourceLocation.withDefaultNamespace("block/stone"));
         sidedSlab(ModBlocks.SNOWY_STONE_SLAB, ImmersiveWeathering.res("block/snowy_stone_side"), ResourceLocation.parse("minecraft:block/snow"), ResourceLocation.withDefaultNamespace("block/stone"));
+        simpleWall(ModBlocks.CRACKED_TUFF_BRICK_WALL, ModBlocks.CRACKED_TUFF_BRICKS);
 
         simpleBlockAndItem(ModBlocks.SNOWY_COBBLESTONE);
         simpleStairs(ModBlocks.SNOWY_COBBLESTONE_STAIRS, ModBlocks.SNOWY_COBBLESTONE);
@@ -111,14 +113,14 @@ public class ModBlockStateProvider extends BlockStateProvider {
         this.simpleBlockItem(ModBlocks.GRASSY_EARTHEN_CLAY.get(), new ModelFile.UncheckedModelFile(ImmersiveWeathering.res("block/grassy_earthen_clay")));
 
         this.getVariantBuilder(ModBlocks.SANDY_STONE.get()).forAllStatesExcept((state) -> {
-            int sandiness = state.getValue(SandyBlock.SANDINESS);
+            int sandiness = state.getValue(ModBlockProperties.SANDINESS);
             var model = this.models().cubeAll("sandy_stone_" + sandiness, ImmersiveWeathering.res("block/sandy_stone_" + sandiness));
             var modelMirrored = this.models().withExistingParent("sandy_stone_" + sandiness + "_mirrored", ResourceLocation.parse("minecraft:block/cube_mirrored_all")).texture("all", ImmersiveWeathering.res("block/sandy_stone_" + sandiness));
             return ConfiguredModel.builder().modelFile(model).nextModel().modelFile(modelMirrored).nextModel().modelFile(model).rotationY(180).nextModel().modelFile(modelMirrored).rotationY(180).build();
-        }, SandyBlock.SAND_AGE);
+        }, ModBlockProperties.SAND_AGE);
         this.simpleBlockItem(ModBlocks.SANDY_STONE.get(), new ModelFile.UncheckedModelFile(ImmersiveWeathering.res("block/sandy_stone_0")));
         this.getVariantBuilder(ModBlocks.SANDY_STONE_SLAB.get()).forAllStatesExcept((state) -> {
-            int sandiness = state.getValue(SandyBlock.SANDINESS);
+            int sandiness = state.getValue(ModBlockProperties.SANDINESS);
             SlabType type = state.getValue(SlabBlock.TYPE);
             var texture = ImmersiveWeathering.res("block/sandy_stone_" + sandiness);
             var bottom = this.models().slab("sandy_stone_slab_"+sandiness, texture, texture, texture);
@@ -130,7 +132,78 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 case DOUBLE -> this.models().getExistingFile(doubleSlab);
             };
             return ConfiguredModel.builder().modelFile(model).build();
-        }, SandyBlock.SAND_AGE);
+        }, ModBlockProperties.SAND_AGE, StairBlock.WATERLOGGED);
+        this.simpleBlockItem(ModBlocks.SANDY_STONE_SLAB.get(), new ModelFile.UncheckedModelFile(ImmersiveWeathering.res("block/sandy_stone_slab_0")));
+        this.getVariantBuilder(ModBlocks.SANDY_STONE_STAIRS.get()).forAllStatesExcept((state) -> {
+            int sandiness = state.getValue(ModBlockProperties.SANDINESS);
+            Direction facing = state.getValue(StairBlock.FACING);
+            Half half = state.getValue(StairBlock.HALF);
+            StairsShape shape = state.getValue(StairBlock.SHAPE);
+            var texture = ImmersiveWeathering.res("block/sandy_stone_" + sandiness);
+            ModelFile stairs = this.models().stairs("sandy_stone_stairs_"+sandiness, texture, texture, texture);
+            ModelFile stairsInner = this.models().stairsInner("sandy_stone_stairs_inner_"+sandiness, texture, texture, texture);
+            ModelFile stairsOuter = this.models().stairsOuter("sandy_stone_stairs_outer_"+sandiness, texture, texture, texture);
+            int yRot = (int)facing.getClockWise().toYRot();
+            if (shape == StairsShape.INNER_LEFT || shape == StairsShape.OUTER_LEFT) {
+                yRot += 270;
+            }
+
+            if (shape != StairsShape.STRAIGHT && half == Half.TOP) {
+                yRot += 90;
+            }
+
+            yRot %= 360;
+            boolean uvlock = yRot != 0 || half == Half.TOP;
+            return ConfiguredModel.builder().modelFile(shape == StairsShape.STRAIGHT ? stairs : (shape != StairsShape.INNER_LEFT && shape != StairsShape.INNER_RIGHT ? stairsOuter : stairsInner)).rotationX(half == Half.BOTTOM ? 0 : 180).rotationY(yRot).uvLock(uvlock).build();
+        }, ModBlockProperties.SAND_AGE, StairBlock.WATERLOGGED);
+        this.simpleBlockItem(ModBlocks.SANDY_STONE_STAIRS.get(), models().stairs("sandy_stone_stairs_inventory", ImmersiveWeathering.res("block/sandy_stone_0"), ImmersiveWeathering.res("block/sandy_stone_0"), ImmersiveWeathering.res("block/sandy_stone_0")));
+        this.simpleBlockItem(ModBlocks.SANDY_STONE_STAIRS.get(), new ModelFile.UncheckedModelFile(ImmersiveWeathering.res("block/sandy_stone_stairs_inventory")));
+
+        this.getVariantBuilder(ModBlocks.SANDY_COBBLESTONE.get()).forAllStatesExcept((state) -> {
+            int sandiness = state.getValue(ModBlockProperties.SANDINESS);
+            var model = this.models().cubeAll("sandy_cobblestone_" + sandiness, ImmersiveWeathering.res("block/sandy_cobblestone_" + sandiness));
+            return ConfiguredModel.builder().modelFile(model).build();
+        }, ModBlockProperties.SAND_AGE);
+        this.simpleBlockItem(ModBlocks.SANDY_COBBLESTONE.get(), new ModelFile.UncheckedModelFile(ImmersiveWeathering.res("block/sandy_cobblestone_0")));
+        this.getVariantBuilder(ModBlocks.SANDY_COBBLESTONE_SLAB.get()).forAllStatesExcept((state) -> {
+            int sandiness = state.getValue(ModBlockProperties.SANDINESS);
+            SlabType type = state.getValue(SlabBlock.TYPE);
+            var texture = ImmersiveWeathering.res("block/sandy_cobblestone_" + sandiness);
+            var bottom = this.models().slab("sandy_cobblestone_slab_"+sandiness, texture, texture, texture);
+            var top = this.models().slabTop("sandy_cobblestone_slab_top_"+sandiness, texture, texture, texture);
+            var doubleSlab = ImmersiveWeathering.res("block/sandy_cobblestone_" + sandiness);
+            var model = switch (type) {
+                case TOP -> top;
+                case BOTTOM -> bottom;
+                case DOUBLE -> this.models().getExistingFile(doubleSlab);
+            };
+            return ConfiguredModel.builder().modelFile(model).build();
+        }, ModBlockProperties.SAND_AGE, StairBlock.WATERLOGGED);
+        this.simpleBlockItem(ModBlocks.SANDY_COBBLESTONE_SLAB.get(), new ModelFile.UncheckedModelFile(ImmersiveWeathering.res("block/sandy_cobblestone_slab_0")));
+        this.getVariantBuilder(ModBlocks.SANDY_COBBLESTONE_STAIRS.get()).forAllStatesExcept((state) -> {
+            int sandiness = state.getValue(ModBlockProperties.SANDINESS);
+            Direction facing = state.getValue(StairBlock.FACING);
+            Half half = state.getValue(StairBlock.HALF);
+            StairsShape shape = state.getValue(StairBlock.SHAPE);
+            var texture = ImmersiveWeathering.res("block/sandy_cobblestone_" + sandiness);
+            ModelFile stairs = this.models().stairs("sandy_cobblestone_stairs_"+sandiness, texture, texture, texture);
+            ModelFile stairsInner = this.models().stairsInner("sandy_cobblestone_stairs_inner_"+sandiness, texture, texture, texture);
+            ModelFile stairsOuter = this.models().stairsOuter("sandy_cobblestone_stairs_outer_"+sandiness, texture, texture, texture);
+            int yRot = (int)facing.getClockWise().toYRot();
+            if (shape == StairsShape.INNER_LEFT || shape == StairsShape.OUTER_LEFT) {
+                yRot += 270;
+            }
+
+            if (shape != StairsShape.STRAIGHT && half == Half.TOP) {
+                yRot += 90;
+            }
+
+            yRot %= 360;
+            boolean uvlock = yRot != 0 || half == Half.TOP;
+            return ConfiguredModel.builder().modelFile(shape == StairsShape.STRAIGHT ? stairs : (shape != StairsShape.INNER_LEFT && shape != StairsShape.INNER_RIGHT ? stairsOuter : stairsInner)).rotationX(half == Half.BOTTOM ? 0 : 180).rotationY(yRot).uvLock(uvlock).build();
+        }, ModBlockProperties.SAND_AGE, StairBlock.WATERLOGGED);
+        this.simpleBlockItem(ModBlocks.SANDY_COBBLESTONE_STAIRS.get(), models().stairs("sandy_cobblestone_stairs_inventory", ImmersiveWeathering.res("block/sandy_cobblestone_0"), ImmersiveWeathering.res("block/sandy_cobblestone_0"), ImmersiveWeathering.res("block/sandy_cobblestone_0")));
+        this.simpleBlockItem(ModBlocks.SANDY_COBBLESTONE_STAIRS.get(), new ModelFile.UncheckedModelFile(ImmersiveWeathering.res("block/sandy_cobblestone_stairs_inventory")));
 
         simpleBlock(ModBlocks.FROSTY_GRASS.get(), this.models().withExistingParent("frosty_grass", ImmersiveWeathering.res("block/frosty_tinted_cross"))
                 .texture("grass", "immersive_weathering:block/frosty_grass_overlay")
@@ -256,7 +329,48 @@ public class ModBlockStateProvider extends BlockStateProvider {
             return ConfiguredModel.builder().modelFile(model).build();
         });
 
+        this.getVariantBuilder(ModBlocks.THIN_ICE.get()).forAllStatesExcept((state) -> {
+            int cracked = state.getValue(ThinIceBlock.CRACKED);
+            var model = this.models().withExistingParent("thin_ice_" + cracked, ImmersiveWeathering.res("block/thin_ice_template")).texture("texture", ImmersiveWeathering.res("block/thin_ice_" + cracked));
+            return ConfiguredModel.builder().modelFile(model).build();
+        });
+
+        directionalBlock(ModBlocks.FULGURITE.get(), this.models().withExistingParent("fulgurite", ImmersiveWeathering.res("minecraft:block/cross")).texture("cross", "immersive_weathering:block/fulgurite"));
+
         cubeSideBottomTop(ModBlocks.LOAM, ImmersiveWeathering.res("block/loam_top"), ImmersiveWeathering.res("block/loam_side"), ImmersiveWeathering.res("minecraft:block/dirt"));
+        simpleBlockAndItem(ModBlocks.CRACKED_BRICKS);
+        simpleSlab(ModBlocks.CRACKED_BRICK_SLAB, ModBlocks.CRACKED_BRICKS);
+        simpleStairs(ModBlocks.CRACKED_BRICK_STAIRS, ModBlocks.CRACKED_BRICKS);
+        simpleBlockAndItem(ModBlocks.CRACKED_TUFF_BRICKS);
+        simpleSlab(ModBlocks.CRACKED_TUFF_BRICK_SLAB, ModBlocks.CRACKED_TUFF_BRICKS);
+        simpleStairs(ModBlocks.CRACKED_TUFF_BRICK_STAIRS, ModBlocks.CRACKED_TUFF_BRICKS);
+        simpleBlockAndItem(ModBlocks.CRACKED_PRISMARINE_BRICKS);
+        simpleSlab(ModBlocks.CRACKED_PRISMARINE_BRICK_SLAB, ModBlocks.CRACKED_PRISMARINE_BRICKS);
+        simpleStairs(ModBlocks.CRACKED_PRISMARINE_BRICK_STAIRS, ModBlocks.CRACKED_PRISMARINE_BRICKS);
+        simpleBlockAndItem(ModBlocks.CRACKED_END_STONE_BRICKS);
+        simpleSlab(ModBlocks.CRACKED_END_STONE_BRICK_SLAB, ModBlocks.CRACKED_END_STONE_BRICKS);
+        simpleStairs(ModBlocks.CRACKED_END_STONE_BRICK_STAIRS, ModBlocks.CRACKED_END_STONE_BRICKS);
+        simpleBlockAndItem(ModBlocks.MOSSY_BRICKS);
+        simpleSlab(ModBlocks.MOSSY_BRICK_SLAB, ModBlocks.MOSSY_BRICKS);
+        simpleStairs(ModBlocks.MOSSY_BRICK_STAIRS, ModBlocks.MOSSY_BRICKS);
+
+        simpleBlockAndItem(ModBlocks.CHISELED_PRISMARINE_BRICKS);
+        simpleBlockAndItem(ModBlocks.VITRIFIED_SAND);
+        simpleBlockAndItem(ModBlocks.FROSTY_GLASS);
+        paneBlock(ModBlocks.FROSTY_GLASS_PANE.get(), ImmersiveWeathering.res("block/frosty_glass"), ImmersiveWeathering.res("minecraft:block/glass_pane_top"));
+        paneBlock(ModBlocks.TINTED_GLASS_PANE.get(), ImmersiveWeathering.res("minecraft:block/tinted_glass"), ImmersiveWeathering.res("block/tinted_glass_pane_top"));
+
+        simpleSlab(ModBlocks.CRACKED_STONE_BRICK_SLAB, () -> Blocks.CRACKED_STONE_BRICKS);
+        simpleStairs(ModBlocks.CRACKED_STONE_BRICK_STAIRS, () -> Blocks.CRACKED_STONE_BRICKS);
+        simpleSlab(ModBlocks.CRACKED_DEEPSLATE_BRICK_SLAB, () -> Blocks.CRACKED_DEEPSLATE_BRICKS);
+        simpleStairs(ModBlocks.CRACKED_DEEPSLATE_BRICK_STAIRS, () -> Blocks.CRACKED_DEEPSLATE_BRICKS);
+        simpleSlab(ModBlocks.CRACKED_DEEPSLATE_TILE_SLAB, () -> Blocks.CRACKED_DEEPSLATE_TILES);
+        simpleStairs(ModBlocks.CRACKED_DEEPSLATE_TILE_STAIRS, () -> Blocks.CRACKED_DEEPSLATE_TILES);
+        simpleSlab(ModBlocks.CRACKED_NETHER_BRICK_SLAB, () -> Blocks.CRACKED_NETHER_BRICKS);
+        simpleStairs(ModBlocks.CRACKED_NETHER_BRICK_STAIRS, () -> Blocks.CRACKED_NETHER_BRICKS);
+        simpleSlab(ModBlocks.CRACKED_POLISHED_BLACKSTONE_BRICK_SLAB, () -> Blocks.CRACKED_POLISHED_BLACKSTONE_BRICKS);
+        simpleStairs(ModBlocks.CRACKED_POLISHED_BLACKSTONE_BRICK_STAIRS, () -> Blocks.CRACKED_POLISHED_BLACKSTONE_BRICKS);
+
     }
 
     private void simpleBlockItem(Supplier<? extends Block> block) {
@@ -305,7 +419,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
     private void simpleSlab(Supplier<? extends Block> block, Supplier<? extends Block> texture) {
         String name = this.name(block.get());
         ResourceLocation main = blockTexture(texture.get());
-        ResourceLocation doubleSlab = ImmersiveWeathering.res("block/" + this.name(texture.get()));
+        ResourceLocation doubleSlab = ImmersiveWeathering.res(main.getNamespace() + ":block/" + this.name(texture.get()));
         this.slabBlock((SlabBlock) block.get(), doubleSlab, main, main, main);
         this.simpleBlockItem(block.get(), models().slab(name + "_inventory", main, main, main));
         this.simpleBlockItem(block.get(), new ModelFile.UncheckedModelFile(ImmersiveWeathering.res("block/" + this.name(block.get()) + "_inventory")));
@@ -360,8 +474,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
         ResourceLocation resourcelocation = ModelLocationUtils.getModelLocation(block);
         var model = this.models().getExistingFile(resourcelocation);
         this.getMultipartBuilder(block)
-                .part().modelFile(model).uvLock(true).addModel().condition(PipeBlock.UP, true).end()
-                .part().modelFile(model).uvLock(true).addModel()
+                .part().modelFile(model).uvLock(true).rotationX(270).addModel().condition(PipeBlock.UP, true).end()
+                .part().modelFile(model).uvLock(true).rotationX(270).addModel()
                 .condition(PipeBlock.UP, false).condition(PipeBlock.NORTH, false).condition(PipeBlock.WEST, false)
                 .condition(PipeBlock.SOUTH, false).condition(PipeBlock.EAST, false).condition(PipeBlock.DOWN, false).end()
                 .part().modelFile(model).addModel().condition(PipeBlock.NORTH, true).end()
@@ -380,8 +494,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 .part().modelFile(model).rotationY(90).uvLock(true).addModel()
                 .condition(PipeBlock.UP, false).condition(PipeBlock.NORTH, false).condition(PipeBlock.WEST, false)
                 .condition(PipeBlock.SOUTH, false).condition(PipeBlock.EAST, false).condition(PipeBlock.DOWN, false).end()
-                .part().modelFile(model).uvLock(true).addModel().condition(PipeBlock.DOWN, true).end()
-                .part().modelFile(model).uvLock(true).addModel()
+                .part().modelFile(model).uvLock(true).rotationX(90).addModel().condition(PipeBlock.DOWN, true).end()
+                .part().modelFile(model).uvLock(true).rotationX(90).addModel()
                 .condition(PipeBlock.UP, false).condition(PipeBlock.NORTH, false).condition(PipeBlock.WEST, false)
                 .condition(PipeBlock.SOUTH, false).condition(PipeBlock.EAST, false).condition(PipeBlock.DOWN, false).end();
     }
@@ -629,15 +743,15 @@ public class ModBlockStateProvider extends BlockStateProvider {
         Function<Integer, BlockModelBuilder> sideFunc = (sandiness) -> this.models().withExistingParent(baseName + "_side", ImmersiveWeathering.res("block/mossy_template_wall_side")).texture("top", extend(texture, "_" + sandiness)).texture("side", extend(texture, "_" + sandiness)).texture("bottom", extend(texture, "_" + sandiness));
         Function<Integer, BlockModelBuilder> sideTallFunc = (sandiness) -> this.models().withExistingParent(baseName + "_side_tall", ImmersiveWeathering.res("block/mossy_template_wall_side_tall")).texture("top", extend(texture, "_" + sandiness)).texture("side", extend(texture, "_" + sandiness)).texture("bottom", extend(texture, "_" + sandiness));
         MultiPartBlockStateBuilder builder = this.getMultipartBuilder(block);
-        builder.part().modelFile(postFunc.apply(0)).addModel().condition(WallBlock.UP, true).condition(SandyWallBlock.SANDINESS, 0).end();
+        builder.part().modelFile(postFunc.apply(0)).addModel().condition(WallBlock.UP, true).condition(ModBlockProperties.SANDINESS, 0).end();
         WALL_PROPS.entrySet().stream().filter((e) -> e.getKey().getAxis().isHorizontal()).forEach((e) -> {
-            builder.part().modelFile(sideFunc.apply(0)).rotationY(((int) e.getKey().toYRot() + 180) % 360).uvLock(true).addModel().condition(e.getValue(), WallSide.LOW).condition(SandyWallBlock.SANDINESS, 0);
-            builder.part().modelFile(sideTallFunc.apply(0)).rotationY(((int) e.getKey().toYRot() + 180) % 360).uvLock(true).addModel().condition(e.getValue(), WallSide.TALL).condition(SandyWallBlock.SANDINESS, 0);
+            builder.part().modelFile(sideFunc.apply(0)).rotationY(((int) e.getKey().toYRot() + 180) % 360).uvLock(true).addModel().condition(e.getValue(), WallSide.LOW).condition(ModBlockProperties.SANDINESS, 0);
+            builder.part().modelFile(sideTallFunc.apply(0)).rotationY(((int) e.getKey().toYRot() + 180) % 360).uvLock(true).addModel().condition(e.getValue(), WallSide.TALL).condition(ModBlockProperties.SANDINESS, 0);
         });
-        builder.part().modelFile(postFunc.apply(1)).addModel().condition(WallBlock.UP, true).condition(SandyWallBlock.SANDINESS, 1).end();
+        builder.part().modelFile(postFunc.apply(1)).addModel().condition(WallBlock.UP, true).condition(ModBlockProperties.SANDINESS, 1).end();
         WALL_PROPS.entrySet().stream().filter((e) -> e.getKey().getAxis().isHorizontal()).forEach((e) -> {
-            builder.part().modelFile(sideFunc.apply(1)).rotationY(((int) e.getKey().toYRot() + 180) % 360).uvLock(true).addModel().condition(e.getValue(), WallSide.LOW).condition(SandyWallBlock.SANDINESS, 1);
-            builder.part().modelFile(sideTallFunc.apply(1)).rotationY(((int) e.getKey().toYRot() + 180) % 360).uvLock(true).addModel().condition(e.getValue(), WallSide.TALL).condition(SandyWallBlock.SANDINESS, 1);
+            builder.part().modelFile(sideFunc.apply(1)).rotationY(((int) e.getKey().toYRot() + 180) % 360).uvLock(true).addModel().condition(e.getValue(), WallSide.LOW).condition(ModBlockProperties.SANDINESS, 1);
+            builder.part().modelFile(sideTallFunc.apply(1)).rotationY(((int) e.getKey().toYRot() + 180) % 360).uvLock(true).addModel().condition(e.getValue(), WallSide.TALL).condition(ModBlockProperties.SANDINESS, 1);
         });
     }
 

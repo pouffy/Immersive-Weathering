@@ -3,7 +3,8 @@
     {
       "apply": {
         "model": "immersive_weathering:block/frost",
-        "uvlock": true
+        "uvlock": true,
+        "x": 270
       },
       "when": {
         "up": "true"
@@ -12,7 +13,8 @@
     {
       "apply": {
         "model": "immersive_weathering:block/frost",
-        "uvlock": true
+        "uvlock": true,
+        "x": 270
       },
       "when": {
         "down": "false",
@@ -122,7 +124,8 @@
     {
       "apply": {
         "model": "immersive_weathering:block/frost",
-        "uvlock": true
+        "uvlock": true,
+        "x": 90
       },
       "when": {
         "down": "true"
@@ -131,7 +134,8 @@
     {
       "apply": {
         "model": "immersive_weathering:block/frost",
-        "uvlock": true
+        "uvlock": true,
+        "x": 90
       },
       "when": {
         "down": "false",

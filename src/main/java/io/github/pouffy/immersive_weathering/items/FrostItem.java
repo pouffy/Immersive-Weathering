@@ -1,6 +1,5 @@
 package io.github.pouffy.immersive_weathering.items;
 
-import io.github.pouffy.immersive_weathering.blocks.frosted.Frosty;
 import io.github.pouffy.immersive_weathering.datamaps.DataMapHelpers;
 import io.github.pouffy.immersive_weathering.reg.ModBlocks;
 import net.mehvahdjukaar.moonlight.api.client.util.ParticleUtil;

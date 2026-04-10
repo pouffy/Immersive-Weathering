@@ -1,0 +1,414 @@
+{
+  "variants": {
+    "facing=east,half=bottom,sandiness=0,shape=inner_left": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_inner_0",
+      "uvlock": true,
+      "y": 270
+    },
+    "facing=east,half=bottom,sandiness=0,shape=inner_right": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_inner_0"
+    },
+    "facing=east,half=bottom,sandiness=0,shape=outer_left": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_outer_0",
+      "uvlock": true,
+      "y": 270
+    },
+    "facing=east,half=bottom,sandiness=0,shape=outer_right": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_outer_0"
+    },
+    "facing=east,half=bottom,sandiness=0,shape=straight": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_0"
+    },
+    "facing=east,half=bottom,sandiness=1,shape=inner_left": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_inner_1",
+      "uvlock": true,
+      "y": 270
+    },
+    "facing=east,half=bottom,sandiness=1,shape=inner_right": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_inner_1"
+    },
+    "facing=east,half=bottom,sandiness=1,shape=outer_left": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_outer_1",
+      "uvlock": true,
+      "y": 270
+    },
+    "facing=east,half=bottom,sandiness=1,shape=outer_right": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_outer_1"
+    },
+    "facing=east,half=bottom,sandiness=1,shape=straight": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_1"
+    },
+    "facing=east,half=top,sandiness=0,shape=inner_left": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_inner_0",
+      "uvlock": true,
+      "x": 180
+    },
+    "facing=east,half=top,sandiness=0,shape=inner_right": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_inner_0",
+      "uvlock": true,
+      "x": 180,
+      "y": 90
+    },
+    "facing=east,half=top,sandiness=0,shape=outer_left": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_outer_0",
+      "uvlock": true,
+      "x": 180
+    },
+    "facing=east,half=top,sandiness=0,shape=outer_right": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_outer_0",
+      "uvlock": true,
+      "x": 180,
+      "y": 90
+    },
+    "facing=east,half=top,sandiness=0,shape=straight": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_0",
+      "uvlock": true,
+      "x": 180
+    },
+    "facing=east,half=top,sandiness=1,shape=inner_left": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_inner_1",
+      "uvlock": true,
+      "x": 180
+    },
+    "facing=east,half=top,sandiness=1,shape=inner_right": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_inner_1",
+      "uvlock": true,
+      "x": 180,
+      "y": 90
+    },
+    "facing=east,half=top,sandiness=1,shape=outer_left": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_outer_1",
+      "uvlock": true,
+      "x": 180
+    },
+    "facing=east,half=top,sandiness=1,shape=outer_right": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_outer_1",
+      "uvlock": true,
+      "x": 180,
+      "y": 90
+    },
+    "facing=east,half=top,sandiness=1,shape=straight": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_1",
+      "uvlock": true,
+      "x": 180
+    },
+    "facing=north,half=bottom,sandiness=0,shape=inner_left": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_inner_0",
+      "uvlock": true,
+      "y": 180
+    },
+    "facing=north,half=bottom,sandiness=0,shape=inner_right": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_inner_0",
+      "uvlock": true,
+      "y": 270
+    },
+    "facing=north,half=bottom,sandiness=0,shape=outer_left": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_outer_0",
+      "uvlock": true,
+      "y": 180
+    },
+    "facing=north,half=bottom,sandiness=0,shape=outer_right": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_outer_0",
+      "uvlock": true,
+      "y": 270
+    },
+    "facing=north,half=bottom,sandiness=0,shape=straight": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_0",
+      "uvlock": true,
+      "y": 270
+    },
+    "facing=north,half=bottom,sandiness=1,shape=inner_left": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_inner_1",
+      "uvlock": true,
+      "y": 180
+    },
+    "facing=north,half=bottom,sandiness=1,shape=inner_right": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_inner_1",
+      "uvlock": true,
+      "y": 270
+    },
+    "facing=north,half=bottom,sandiness=1,shape=outer_left": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_outer_1",
+      "uvlock": true,
+      "y": 180
+    },
+    "facing=north,half=bottom,sandiness=1,shape=outer_right": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_outer_1",
+      "uvlock": true,
+      "y": 270
+    },
+    "facing=north,half=bottom,sandiness=1,shape=straight": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_1",
+      "uvlock": true,
+      "y": 270
+    },
+    "facing=north,half=top,sandiness=0,shape=inner_left": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_inner_0",
+      "uvlock": true,
+      "x": 180,
+      "y": 270
+    },
+    "facing=north,half=top,sandiness=0,shape=inner_right": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_inner_0",
+      "uvlock": true,
+      "x": 180
+    },
+    "facing=north,half=top,sandiness=0,shape=outer_left": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_outer_0",
+      "uvlock": true,
+      "x": 180,
+      "y": 270
+    },
+    "facing=north,half=top,sandiness=0,shape=outer_right": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_outer_0",
+      "uvlock": true,
+      "x": 180
+    },
+    "facing=north,half=top,sandiness=0,shape=straight": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_0",
+      "uvlock": true,
+      "x": 180,
+      "y": 270
+    },
+    "facing=north,half=top,sandiness=1,shape=inner_left": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_inner_1",
+      "uvlock": true,
+      "x": 180,
+      "y": 270
+    },
+    "facing=north,half=top,sandiness=1,shape=inner_right": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_inner_1",
+      "uvlock": true,
+      "x": 180
+    },
+    "facing=north,half=top,sandiness=1,shape=outer_left": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_outer_1",
+      "uvlock": true,
+      "x": 180,
+      "y": 270
+    },
+    "facing=north,half=top,sandiness=1,shape=outer_right": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_outer_1",
+      "uvlock": true,
+      "x": 180
+    },
+    "facing=north,half=top,sandiness=1,shape=straight": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_1",
+      "uvlock": true,
+      "x": 180,
+      "y": 270
+    },
+    "facing=south,half=bottom,sandiness=0,shape=inner_left": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_inner_0"
+    },
+    "facing=south,half=bottom,sandiness=0,shape=inner_right": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_inner_0",
+      "uvlock": true,
+      "y": 90
+    },
+    "facing=south,half=bottom,sandiness=0,shape=outer_left": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_outer_0"
+    },
+    "facing=south,half=bottom,sandiness=0,shape=outer_right": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_outer_0",
+      "uvlock": true,
+      "y": 90
+    },
+    "facing=south,half=bottom,sandiness=0,shape=straight": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_0",
+      "uvlock": true,
+      "y": 90
+    },
+    "facing=south,half=bottom,sandiness=1,shape=inner_left": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_inner_1"
+    },
+    "facing=south,half=bottom,sandiness=1,shape=inner_right": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_inner_1",
+      "uvlock": true,
+      "y": 90
+    },
+    "facing=south,half=bottom,sandiness=1,shape=outer_left": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_outer_1"
+    },
+    "facing=south,half=bottom,sandiness=1,shape=outer_right": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_outer_1",
+      "uvlock": true,
+      "y": 90
+    },
+    "facing=south,half=bottom,sandiness=1,shape=straight": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_1",
+      "uvlock": true,
+      "y": 90
+    },
+    "facing=south,half=top,sandiness=0,shape=inner_left": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_inner_0",
+      "uvlock": true,
+      "x": 180,
+      "y": 90
+    },
+    "facing=south,half=top,sandiness=0,shape=inner_right": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_inner_0",
+      "uvlock": true,
+      "x": 180,
+      "y": 180
+    },
+    "facing=south,half=top,sandiness=0,shape=outer_left": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_outer_0",
+      "uvlock": true,
+      "x": 180,
+      "y": 90
+    },
+    "facing=south,half=top,sandiness=0,shape=outer_right": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_outer_0",
+      "uvlock": true,
+      "x": 180,
+      "y": 180
+    },
+    "facing=south,half=top,sandiness=0,shape=straight": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_0",
+      "uvlock": true,
+      "x": 180,
+      "y": 90
+    },
+    "facing=south,half=top,sandiness=1,shape=inner_left": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_inner_1",
+      "uvlock": true,
+      "x": 180,
+      "y": 90
+    },
+    "facing=south,half=top,sandiness=1,shape=inner_right": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_inner_1",
+      "uvlock": true,
+      "x": 180,
+      "y": 180
+    },
+    "facing=south,half=top,sandiness=1,shape=outer_left": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_outer_1",
+      "uvlock": true,
+      "x": 180,
+      "y": 90
+    },
+    "facing=south,half=top,sandiness=1,shape=outer_right": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_outer_1",
+      "uvlock": true,
+      "x": 180,
+      "y": 180
+    },
+    "facing=south,half=top,sandiness=1,shape=straight": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_1",
+      "uvlock": true,
+      "x": 180,
+      "y": 90
+    },
+    "facing=west,half=bottom,sandiness=0,shape=inner_left": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_inner_0",
+      "uvlock": true,
+      "y": 90
+    },
+    "facing=west,half=bottom,sandiness=0,shape=inner_right": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_inner_0",
+      "uvlock": true,
+      "y": 180
+    },
+    "facing=west,half=bottom,sandiness=0,shape=outer_left": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_outer_0",
+      "uvlock": true,
+      "y": 90
+    },
+    "facing=west,half=bottom,sandiness=0,shape=outer_right": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_outer_0",
+      "uvlock": true,
+      "y": 180
+    },
+    "facing=west,half=bottom,sandiness=0,shape=straight": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_0",
+      "uvlock": true,
+      "y": 180
+    },
+    "facing=west,half=bottom,sandiness=1,shape=inner_left": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_inner_1",
+      "uvlock": true,
+      "y": 90
+    },
+    "facing=west,half=bottom,sandiness=1,shape=inner_right": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_inner_1",
+      "uvlock": true,
+      "y": 180
+    },
+    "facing=west,half=bottom,sandiness=1,shape=outer_left": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_outer_1",
+      "uvlock": true,
+      "y": 90
+    },
+    "facing=west,half=bottom,sandiness=1,shape=outer_right": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_outer_1",
+      "uvlock": true,
+      "y": 180
+    },
+    "facing=west,half=bottom,sandiness=1,shape=straight": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_1",
+      "uvlock": true,
+      "y": 180
+    },
+    "facing=west,half=top,sandiness=0,shape=inner_left": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_inner_0",
+      "uvlock": true,
+      "x": 180,
+      "y": 180
+    },
+    "facing=west,half=top,sandiness=0,shape=inner_right": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_inner_0",
+      "uvlock": true,
+      "x": 180,
+      "y": 270
+    },
+    "facing=west,half=top,sandiness=0,shape=outer_left": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_outer_0",
+      "uvlock": true,
+      "x": 180,
+      "y": 180
+    },
+    "facing=west,half=top,sandiness=0,shape=outer_right": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_outer_0",
+      "uvlock": true,
+      "x": 180,
+      "y": 270
+    },
+    "facing=west,half=top,sandiness=0,shape=straight": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_0",
+      "uvlock": true,
+      "x": 180,
+      "y": 180
+    },
+    "facing=west,half=top,sandiness=1,shape=inner_left": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_inner_1",
+      "uvlock": true,
+      "x": 180,
+      "y": 180
+    },
+    "facing=west,half=top,sandiness=1,shape=inner_right": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_inner_1",
+      "uvlock": true,
+      "x": 180,
+      "y": 270
+    },
+    "facing=west,half=top,sandiness=1,shape=outer_left": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_outer_1",
+      "uvlock": true,
+      "x": 180,
+      "y": 180
+    },
+    "facing=west,half=top,sandiness=1,shape=outer_right": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_outer_1",
+      "uvlock": true,
+      "x": 180,
+      "y": 270
+    },
+    "facing=west,half=top,sandiness=1,shape=straight": {
+      "model": "immersive_weathering:block/sandy_cobblestone_stairs_1",
+      "uvlock": true,
+      "x": 180,
+      "y": 180
+    }
+  }
+}

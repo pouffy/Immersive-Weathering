@@ -1,10 +1,9 @@
 package io.github.pouffy.immersive_weathering.data.fluid_generators.builtin;
 
 import com.mojang.serialization.MapCodec;
-import io.github.pouffy.immersive_weathering.blocks.mossy.IMossy;
+import io.github.pouffy.immersive_weathering.api.weathering.operators.WeatheringOperator;
 import io.github.pouffy.immersive_weathering.data.fluid_generators.IFluidGenerator;
 import io.github.pouffy.immersive_weathering.datamaps.DataMapHelpers;
-import io.github.pouffy.immersive_weathering.util.Weatherable;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.Level;
@@ -34,8 +33,8 @@ public class BurnMossGenerator implements IFluidGenerator {
             var previous = DataMapHelpers.getPrevious(DataMapHelpers.Type.MOSS, state);
             if (previous.isPresent() && previous.get() != state) {
                 var toSet = previous.get();
-                if (toSet.hasProperty(IMossy.WEATHERABLE))
-                    toSet.setValue(IMossy.WEATHERABLE, Weatherable.WeatheringState.STABLE);
+                if (toSet.hasProperty(WeatheringOperator.WEATHERABLE))
+                    toSet.setValue(WeatheringOperator.WEATHERABLE, WeatheringOperator.WeatheringState.STABLE);
                 level.setBlockAndUpdate(p, toSet);
                 return Optional.of(p);
             }

@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "can_expand=false,cracked=0": {
+      "model": "immersive_weathering:block/thin_ice_0"
+    },
+    "can_expand=false,cracked=1": {
+      "model": "immersive_weathering:block/thin_ice_1"
+    },
+    "can_expand=false,cracked=2": {
+      "model": "immersive_weathering:block/thin_ice_2"
+    },
+    "can_expand=false,cracked=3": {
+      "model": "immersive_weathering:block/thin_ice_3"
+    },
+    "can_expand=true,cracked=0": {
+      "model": "immersive_weathering:block/thin_ice_0"
+    },
+    "can_expand=true,cracked=1": {
+      "model": "immersive_weathering:block/thin_ice_1"
+    },
+    "can_expand=true,cracked=2": {
+      "model": "immersive_weathering:block/thin_ice_2"
+    },
+    "can_expand=true,cracked=3": {
+      "model": "immersive_weathering:block/thin_ice_3"
+    }
+  }
+}

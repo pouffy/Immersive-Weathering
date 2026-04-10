@@ -114,13 +114,13 @@ public class ModCreativeTab {
                 ModBlocks.CRACKED_POLISHED_BLACKSTONE_BRICK_STAIRS, ModBlocks.CRACKED_POLISHED_BLACKSTONE_BRICK_SLAB, ModBlocks.CRACKED_POLISHED_BLACKSTONE_BRICK_WALL
         );
 
-        after(e, Items.END_STONE_BRICKS,
-                ModBlocks.CRACKED_END_STONE_BRICKS
-        );
+        after(e, Items.END_STONE_BRICKS, ModBlocks.CRACKED_END_STONE_BRICKS);
 
-        after(e, Items.END_STONE_BRICK_WALL,
-                ModBlocks.CRACKED_END_STONE_BRICK_STAIRS, ModBlocks.CRACKED_END_STONE_BRICK_SLAB, ModBlocks.CRACKED_END_STONE_BRICK_WALL
-        );
+        after(e, Items.END_STONE_BRICK_WALL, ModBlocks.CRACKED_END_STONE_BRICK_STAIRS, ModBlocks.CRACKED_END_STONE_BRICK_SLAB, ModBlocks.CRACKED_END_STONE_BRICK_WALL);
+
+        after(e, Items.TUFF_BRICKS, ModBlocks.CRACKED_TUFF_BRICKS);
+
+        after(e, Items.TUFF_BRICK_WALL, ModBlocks.CRACKED_TUFF_BRICK_STAIRS, ModBlocks.CRACKED_TUFF_BRICK_SLAB, ModBlocks.CRACKED_TUFF_BRICK_WALL);
 
         after(e, Items.IRON_BLOCK,
                 ModBlocks.PLATE_IRON, ModBlocks.PLATE_IRON_STAIRS, ModBlocks.PLATE_IRON_SLAB,
@@ -233,13 +233,9 @@ public class ModCreativeTab {
 
 
         //INGREDIENTS
-        before(e, Items.BRICK,
-                ModItems.STONE_BRICK
-        );
+        before(e, Items.BRICK, ModItems.STONE_BRICK, ModItems.TUFF_BRICK);
 
-        after(e, Items.BRICK,
-                ModItems.DEEPSLATE_BRICK, ModItems.DEEPSLATE_TILE, ModItems.PRISMARINE_BRICK
-        );
+        after(e, Items.BRICK, ModItems.DEEPSLATE_BRICK, ModItems.DEEPSLATE_TILE, ModItems.PRISMARINE_BRICK);
 
         after(e, Items.NETHER_BRICK,
                 ModItems.BLACKSTONE_BRICK, ModItems.END_STONE_BRICK, ModItems.MORTAR

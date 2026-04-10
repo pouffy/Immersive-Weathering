@@ -1,10 +1,10 @@
 package io.github.pouffy.immersive_weathering.datagen.server;
 
 import io.github.pouffy.immersive_weathering.ImmersiveWeathering;
+import io.github.pouffy.immersive_weathering.blocks.ModBlockProperties;
 import io.github.pouffy.immersive_weathering.blocks.ThinIceBlock;
 import io.github.pouffy.immersive_weathering.blocks.WeedsBlock;
 import io.github.pouffy.immersive_weathering.blocks.frosted.FrostBlock;
-import io.github.pouffy.immersive_weathering.blocks.frosted.Frosty;
 import io.github.pouffy.immersive_weathering.data.block_growths.BlockGrowthProvider;
 import io.github.pouffy.immersive_weathering.data.block_growths.BlockPair;
 import io.github.pouffy.immersive_weathering.data.block_growths.Operator;
@@ -12,7 +12,6 @@ import io.github.pouffy.immersive_weathering.data.block_growths.TickSource;
 import io.github.pouffy.immersive_weathering.data.block_growths.area_condition.AreaCheck;
 import io.github.pouffy.immersive_weathering.data.block_growths.area_condition.AreaCondition;
 import io.github.pouffy.immersive_weathering.data.block_growths.area_condition.NeighborCheck;
-import io.github.pouffy.immersive_weathering.data.block_growths.data.BlockGrowthBuilder;
 import io.github.pouffy.immersive_weathering.data.block_growths.data.GrowthOutput;
 import io.github.pouffy.immersive_weathering.data.block_growths.growths.builtin.*;
 import io.github.pouffy.immersive_weathering.data.position_tests.BiomeSetMatchTest;
@@ -577,7 +576,7 @@ public class ModBlockGrowths extends BlockGrowthProvider {
     }
 
     private BlockState frostNatural(BlockState state) {
-        return state.setValue(Frosty.NATURAL, true);
+        return state.setValue(ModBlockProperties.NATURAL, true);
     }
 
     private BlockState lower(BlockState state) {

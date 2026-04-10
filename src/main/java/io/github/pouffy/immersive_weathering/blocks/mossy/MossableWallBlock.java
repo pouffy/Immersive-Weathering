@@ -1,5 +1,6 @@
 package io.github.pouffy.immersive_weathering.blocks.mossy;
 
+import io.github.pouffy.immersive_weathering.api.weathering.operators.WeatheringOperator;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
@@ -16,45 +17,23 @@ public class MossableWallBlock extends MossyWallBlock {
 
     public MossableWallBlock(Properties settings) {
         super(settings);
-        this.registerDefaultState(this.defaultBlockState().setValue(WEATHERABLE, WeatheringState.FALSE));
+        this.registerDefaultState(this.defaultBlockState().setValue(WeatheringOperator.WEATHERABLE, WeatheringOperator.WeatheringState.FALSE));
     }
 
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
-        return super.getShape(state.setValue(WEATHERABLE, WeatheringState.FALSE), getter, pos, context);
+        return super.getShape(state.setValue(WeatheringOperator.WEATHERABLE, WeatheringOperator.WeatheringState.FALSE), getter, pos, context);
     }
 
     @Override
     public VoxelShape getCollisionShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
-        return super.getCollisionShape(state.setValue(WEATHERABLE, WeatheringState.FALSE), getter, pos, context);
-    }
-
-    @Override
-    public boolean isWeathering(BlockState state) {
-        return state.hasProperty(WEATHERABLE) && state.getValue(WEATHERABLE).isWeathering();
+        return super.getCollisionShape(state.setValue(WeatheringOperator.WEATHERABLE, WeatheringOperator.WeatheringState.FALSE), getter, pos, context);
     }
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> stateBuilder) {
         super.createBlockStateDefinition(stateBuilder);
-        stateBuilder.add(WEATHERABLE);
-    }
-
-    @Override
-    public void neighborChanged(BlockState state, Level level, BlockPos pos, Block block, BlockPos neighbor, boolean isMoving) {
-        this.updateWeatheredStateOnNeighborChanged(state, level, pos);
-    }
-
-    @Override
-    public BlockState getStateForPlacement(BlockPlaceContext placeContext) {
-        BlockState state = super.getStateForPlacement(placeContext);
-        return getWeatheredStateForPlacement(state, placeContext.getClickedPos(), placeContext.getLevel());
-    }
-
-    @Override
-    public void randomTick(BlockState state, ServerLevel serverLevel, BlockPos pos, RandomSource random) {
-        this.tryWeather(state, serverLevel, pos, random);
-
+        stateBuilder.add(WeatheringOperator.WEATHERABLE);
     }
 
     @Override

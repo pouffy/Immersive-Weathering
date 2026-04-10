@@ -54,6 +54,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
         this.tag(Tags.Items.BRICKS).add(
                 ModItems.DEEPSLATE_BRICK.get(),
                 ModItems.STONE_BRICK.get(),
+                ModItems.TUFF_BRICK.get(),
                 ModItems.END_STONE_BRICK.get(),
                 ModItems.BLACKSTONE_BRICK.get(),
                 ModItems.PRISMARINE_BRICK.get()

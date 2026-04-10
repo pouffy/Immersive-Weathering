@@ -3,8 +3,8 @@ package io.github.pouffy.immersive_weathering.data.block_growths.growths.builtin
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.github.pouffy.immersive_weathering.api.weathering.operators.SandOperator;
 import io.github.pouffy.immersive_weathering.blocks.ModBlockProperties;
-import io.github.pouffy.immersive_weathering.blocks.sandy.ISandy;
 import io.github.pouffy.immersive_weathering.data.block_growths.TickSource;
 import io.github.pouffy.immersive_weathering.data.block_growths.growths.IBlockGrowth;
 import io.github.pouffy.immersive_weathering.datamaps.DataMapHelpers;
@@ -14,7 +14,6 @@ import io.github.pouffy.immersive_weathering.util.TemperatureManager;
 import io.github.pouffy.immersive_weathering.util.WeatheringHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
-import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
@@ -72,7 +71,7 @@ public class SandGrowth implements IBlockGrowth {
 
             RandomSource random = level.random;
             int rand = random.nextInt(10);
-            if (state.is(ModTags.SANDY) && state.getValue(ModBlockProperties.SANDINESS) == 0 && ISandy.isRandomSandyPos(pos)) level.setBlockAndUpdate(pos, state.setValue(ModBlockProperties.SANDINESS, 1).setValue(ModBlockProperties.SAND_AGE, rand));
+            if (state.is(ModTags.SANDY) && state.getValue(ModBlockProperties.SANDINESS) == 0 && SandOperator.isRandomSandyPos(pos)) level.setBlockAndUpdate(pos, state.setValue(ModBlockProperties.SANDINESS, 1).setValue(ModBlockProperties.SAND_AGE, rand));
 
             else if (sandyBlock.isPresent()) {
                 BlockPos downPos = pos.below();

@@ -3,10 +3,6 @@ package io.github.pouffy.immersive_weathering.reg;
 import io.github.pouffy.immersive_weathering.ImmersiveWeathering;
 import io.github.pouffy.immersive_weathering.blocks.*;
 import io.github.pouffy.immersive_weathering.blocks.charred.*;
-import io.github.pouffy.immersive_weathering.blocks.cracked.CrackedBlock;
-import io.github.pouffy.immersive_weathering.blocks.cracked.CrackedSlabBlock;
-import io.github.pouffy.immersive_weathering.blocks.cracked.CrackedStairsBlock;
-import io.github.pouffy.immersive_weathering.blocks.cracked.CrackedWallBlock;
 import io.github.pouffy.immersive_weathering.blocks.frosted.FrostBlock;
 import io.github.pouffy.immersive_weathering.blocks.frosted.FrostyGlassBlock;
 import io.github.pouffy.immersive_weathering.blocks.frosted.FrostyGlassPaneBlock;
@@ -17,10 +13,6 @@ import io.github.pouffy.immersive_weathering.blocks.sandy.SandyBlock;
 import io.github.pouffy.immersive_weathering.blocks.sandy.SandySlabBlock;
 import io.github.pouffy.immersive_weathering.blocks.sandy.SandyStairsBlock;
 import io.github.pouffy.immersive_weathering.blocks.sandy.SandyWallBlock;
-import io.github.pouffy.immersive_weathering.blocks.snowy.SnowyBlock;
-import io.github.pouffy.immersive_weathering.blocks.snowy.SnowySlabBlock;
-import io.github.pouffy.immersive_weathering.blocks.snowy.SnowyStairsBlock;
-import io.github.pouffy.immersive_weathering.blocks.snowy.SnowyWallBlock;
 import io.github.pouffy.immersive_weathering.blocks.soil_types.*;
 import io.github.pouffy.immersive_weathering.util.ModUtils;
 import net.mehvahdjukaar.moonlight.api.block.ModStairBlock;
@@ -131,56 +123,56 @@ public class ModBlocks {
     //mossy blocks
 
     public static final DeferredBlock<Block> MOSSY_BRICKS = regWithItem("mossy_bricks", () ->
-            new MossyBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BRICKS)
+            new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.BRICKS)
                     .requiresCorrectToolForDrops().strength(2f, 6f)));
     public static final DeferredBlock<Block> MOSSY_BRICK_STAIRS = regWithItem("mossy_brick_stairs", () ->
-            new MossyStairsBlock(MOSSY_BRICKS, BlockBehaviour.Properties.ofFullCopy(MOSSY_BRICKS.get())));
+            new ModStairBlock(MOSSY_BRICKS, BlockBehaviour.Properties.ofFullCopy(MOSSY_BRICKS.get())));
     public static final DeferredBlock<Block> MOSSY_BRICK_SLAB = regWithItem("mossy_brick_slab", () ->
-            new MossySlabBlock(BlockBehaviour.Properties.ofFullCopy(MOSSY_BRICKS.get())));
+            new SlabBlock(BlockBehaviour.Properties.ofFullCopy(MOSSY_BRICKS.get())));
     public static final DeferredBlock<Block> MOSSY_BRICK_WALL = regWithItem("mossy_brick_wall", () ->
-            new MossyWallBlock(BlockBehaviour.Properties.ofFullCopy(MOSSY_BRICKS.get())));
+            new WallBlock(BlockBehaviour.Properties.ofFullCopy(MOSSY_BRICKS.get())));
 
     public static final DeferredBlock<Block> MOSSY_STONE = regWithItem("mossy_stone", () ->
-            new MossyBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE).requiresCorrectToolForDrops().strength(1.5f, 6f)));
+            new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE).requiresCorrectToolForDrops().strength(1.5f, 6f)));
     public static final DeferredBlock<Block> MOSSY_CHISELED_STONE_BRICKS = regWithItem("mossy_chiseled_stone_bricks", () ->
-            new MossyBlock(BlockBehaviour.Properties.ofFullCopy(MOSSY_STONE.get())));
+            new Block(BlockBehaviour.Properties.ofFullCopy(MOSSY_STONE.get())));
     public static final DeferredBlock<Block> MOSSY_STONE_STAIRS = regWithItem("mossy_stone_stairs", () ->
-            new MossyStairsBlock(MOSSY_STONE, BlockBehaviour.Properties.ofFullCopy(MOSSY_STONE.get())));
+            new ModStairBlock(MOSSY_STONE, BlockBehaviour.Properties.ofFullCopy(MOSSY_STONE.get())));
     public static final DeferredBlock<Block> MOSSY_STONE_SLAB = regWithItem("mossy_stone_slab", () ->
-            new MossySlabBlock(BlockBehaviour.Properties.ofFullCopy(MOSSY_STONE.get())));
+            new SlabBlock(BlockBehaviour.Properties.ofFullCopy(MOSSY_STONE.get())));
     public static final DeferredBlock<Block> MOSSY_STONE_WALL = regWithItem("mossy_stone_wall", () ->
-            new MossyWallBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.COBBLESTONE_WALL)));
+            new WallBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.COBBLESTONE_WALL)));
 
     //snowy blocks
 
     public static final DeferredBlock<Block> SNOWY_STONE = regWithItem("snowy_stone", () ->
-            new SnowyBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE).randomTicks()));
+            new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE).randomTicks()));
     public static final DeferredBlock<Block> SNOWY_STONE_STAIRS = regWithItem("snowy_stone_stairs", () ->
-            new SnowyStairsBlock(SNOWY_STONE, BlockBehaviour.Properties.ofFullCopy(SNOWY_STONE.get()).randomTicks()));
+            new ModStairBlock(SNOWY_STONE, BlockBehaviour.Properties.ofFullCopy(SNOWY_STONE.get()).randomTicks()));
     public static final DeferredBlock<Block> SNOWY_STONE_SLAB = regWithItem("snowy_stone_slab", () ->
-            new SnowySlabBlock(BlockBehaviour.Properties.ofFullCopy(SNOWY_STONE.get()).randomTicks()));
+            new SlabBlock(BlockBehaviour.Properties.ofFullCopy(SNOWY_STONE.get()).randomTicks()));
     public static final DeferredBlock<Block> SNOWY_STONE_WALL = regWithItem("snowy_stone_wall", () ->
-            new SnowyWallBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.COBBLESTONE_WALL).randomTicks()));
+            new WallBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.COBBLESTONE_WALL).randomTicks()));
 
     public static final DeferredBlock<Block> SNOWY_COBBLESTONE = regWithItem("snowy_cobblestone", () ->
-            new SnowyBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.COBBLESTONE).randomTicks()));
+            new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.COBBLESTONE).randomTicks()));
     public static final DeferredBlock<Block> SNOWY_COBBLESTONE_STAIRS = regWithItem("snowy_cobblestone_stairs", () ->
-            new SnowyStairsBlock(SNOWY_STONE, BlockBehaviour.Properties.ofFullCopy(SNOWY_STONE.get()).randomTicks()));
+            new ModStairBlock(SNOWY_STONE, BlockBehaviour.Properties.ofFullCopy(SNOWY_STONE.get()).randomTicks()));
     public static final DeferredBlock<Block> SNOWY_COBBLESTONE_SLAB = regWithItem("snowy_cobblestone_slab", () ->
-            new SnowySlabBlock(BlockBehaviour.Properties.ofFullCopy(SNOWY_STONE.get()).randomTicks()));
+            new SlabBlock(BlockBehaviour.Properties.ofFullCopy(SNOWY_STONE.get()).randomTicks()));
     public static final DeferredBlock<Block> SNOWY_COBBLESTONE_WALL = regWithItem("snowy_cobblestone_wall", () ->
-            new SnowyWallBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.COBBLESTONE_WALL).randomTicks()));
+            new WallBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.COBBLESTONE_WALL).randomTicks()));
 
     public static final DeferredBlock<Block> SNOWY_STONE_BRICKS = regWithItem("snowy_stone_bricks", () ->
-            new SnowyBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE).randomTicks()));
+            new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE).randomTicks()));
     public static final DeferredBlock<Block> SNOWY_CHISELED_STONE_BRICKS = regWithItem("snowy_chiseled_stone_bricks", () ->
-            new SnowyBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE).randomTicks()));
+            new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE).randomTicks()));
     public static final DeferredBlock<Block> SNOWY_STONE_BRICK_STAIRS = regWithItem("snowy_stone_brick_stairs", () ->
-            new SnowyStairsBlock(SNOWY_STONE, BlockBehaviour.Properties.ofFullCopy(SNOWY_STONE.get()).randomTicks()));
+            new ModStairBlock(SNOWY_STONE, BlockBehaviour.Properties.ofFullCopy(SNOWY_STONE.get()).randomTicks()));
     public static final DeferredBlock<Block> SNOWY_STONE_BRICK_SLAB = regWithItem("snowy_stone_brick_slab", () ->
-            new SnowySlabBlock(BlockBehaviour.Properties.ofFullCopy(SNOWY_STONE.get()).randomTicks()));
+            new SlabBlock(BlockBehaviour.Properties.ofFullCopy(SNOWY_STONE.get()).randomTicks()));
     public static final DeferredBlock<Block> SNOWY_STONE_BRICK_WALL = regWithItem("snowy_stone_brick_wall", () ->
-            new SnowyWallBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.COBBLESTONE_WALL).randomTicks()));
+            new WallBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.COBBLESTONE_WALL).randomTicks()));
 
     //sandy blocks
 
@@ -216,67 +208,76 @@ public class ModBlocks {
     //cracked blocks
 
     public static final DeferredBlock<Block> CRACKED_BRICKS = regWithItem("cracked_bricks", () ->
-            new CrackedBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BRICKS).requiresCorrectToolForDrops().strength(2f, 6f)));
+            new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.BRICKS).requiresCorrectToolForDrops().strength(2f, 6f)));
     public static final DeferredBlock<Block> CRACKED_BRICK_STAIRS = regWithItem("cracked_brick_stairs", () ->
-            new CrackedStairsBlock(CRACKED_BRICKS, BlockBehaviour.Properties.ofFullCopy(CRACKED_BRICKS.get())));
+            new ModStairBlock(CRACKED_BRICKS, BlockBehaviour.Properties.ofFullCopy(CRACKED_BRICKS.get())));
     public static final DeferredBlock<Block> CRACKED_BRICK_SLAB = regWithItem("cracked_brick_slab", () ->
-            new CrackedSlabBlock(BlockBehaviour.Properties.ofFullCopy(CRACKED_BRICKS.get())));
+            new SlabBlock(BlockBehaviour.Properties.ofFullCopy(CRACKED_BRICKS.get())));
     public static final DeferredBlock<Block> CRACKED_BRICK_WALL = regWithItem("cracked_brick_wall", () ->
-            new CrackedWallBlock(BlockBehaviour.Properties.ofFullCopy(CRACKED_BRICKS.get())));
+            new WallBlock(BlockBehaviour.Properties.ofFullCopy(CRACKED_BRICKS.get())));
+
+    public static final DeferredBlock<Block> CRACKED_TUFF_BRICKS = regWithItem("cracked_tuff_bricks", () ->
+            new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.TUFF_BRICKS).requiresCorrectToolForDrops()));
+    public static final DeferredBlock<Block> CRACKED_TUFF_BRICK_STAIRS = regWithItem("cracked_tuff_brick_stairs", () ->
+            new ModStairBlock(CRACKED_TUFF_BRICKS, BlockBehaviour.Properties.ofFullCopy(CRACKED_TUFF_BRICKS.get())));
+    public static final DeferredBlock<Block> CRACKED_TUFF_BRICK_SLAB = regWithItem("cracked_tuff_brick_slab", () ->
+            new SlabBlock(BlockBehaviour.Properties.ofFullCopy(CRACKED_TUFF_BRICKS.get())));
+    public static final DeferredBlock<Block> CRACKED_TUFF_BRICK_WALL = regWithItem("cracked_tuff_brick_wall", () ->
+            new WallBlock(BlockBehaviour.Properties.ofFullCopy(CRACKED_TUFF_BRICKS.get())));
 
     public static final DeferredBlock<Block> CRACKED_STONE_BRICK_STAIRS = regWithItem("cracked_stone_brick_stairs", () ->
-            new CrackedStairsBlock(() -> Blocks.CRACKED_STONE_BRICKS, BlockBehaviour.Properties.ofFullCopy(Blocks.CRACKED_STONE_BRICKS)));
+            new ModStairBlock(() -> Blocks.CRACKED_STONE_BRICKS, BlockBehaviour.Properties.ofFullCopy(Blocks.CRACKED_STONE_BRICKS)));
     public static final DeferredBlock<Block> CRACKED_STONE_BRICK_SLAB = regWithItem("cracked_stone_brick_slab", () ->
-            new CrackedSlabBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CRACKED_STONE_BRICKS)));
+            new SlabBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CRACKED_STONE_BRICKS)));
     public static final DeferredBlock<Block> CRACKED_STONE_BRICK_WALL = regWithItem("cracked_stone_brick_wall", () ->
-            new CrackedWallBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CRACKED_STONE_BRICKS)));
+            new WallBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CRACKED_STONE_BRICKS)));
 
     public static final DeferredBlock<Block> CRACKED_POLISHED_BLACKSTONE_BRICK_STAIRS = regWithItem("cracked_polished_blackstone_brick_stairs", () ->
-            new CrackedStairsBlock(() -> Blocks.CRACKED_POLISHED_BLACKSTONE_BRICKS, BlockBehaviour.Properties.ofFullCopy(Blocks.CRACKED_POLISHED_BLACKSTONE_BRICKS)));
+            new ModStairBlock(() -> Blocks.CRACKED_POLISHED_BLACKSTONE_BRICKS, BlockBehaviour.Properties.ofFullCopy(Blocks.CRACKED_POLISHED_BLACKSTONE_BRICKS)));
     public static final DeferredBlock<Block> CRACKED_POLISHED_BLACKSTONE_BRICK_SLAB = regWithItem("cracked_polished_blackstone_brick_slab", () ->
-            new CrackedSlabBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CRACKED_POLISHED_BLACKSTONE_BRICKS)));
+            new SlabBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CRACKED_POLISHED_BLACKSTONE_BRICKS)));
     public static final DeferredBlock<Block> CRACKED_POLISHED_BLACKSTONE_BRICK_WALL = regWithItem("cracked_polished_blackstone_brick_wall", () ->
-            new CrackedWallBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CRACKED_POLISHED_BLACKSTONE_BRICKS)));
+            new WallBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CRACKED_POLISHED_BLACKSTONE_BRICKS)));
 
     public static final DeferredBlock<Block> CRACKED_NETHER_BRICK_STAIRS = regWithItem("cracked_nether_brick_stairs", () ->
-            new CrackedStairsBlock(() -> Blocks.CRACKED_NETHER_BRICKS, BlockBehaviour.Properties.ofFullCopy(Blocks.NETHER_BRICKS)));
+            new ModStairBlock(() -> Blocks.CRACKED_NETHER_BRICKS, BlockBehaviour.Properties.ofFullCopy(Blocks.NETHER_BRICKS)));
     public static final DeferredBlock<Block> CRACKED_NETHER_BRICK_SLAB = regWithItem("cracked_nether_brick_slab", () ->
-            new CrackedSlabBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.NETHER_BRICKS)));
+            new SlabBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.NETHER_BRICKS)));
     public static final DeferredBlock<Block> CRACKED_NETHER_BRICK_WALL = regWithItem("cracked_nether_brick_wall", () ->
-            new CrackedWallBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.NETHER_BRICKS)));
+            new WallBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.NETHER_BRICKS)));
 
     public static final DeferredBlock<Block> CRACKED_DEEPSLATE_BRICK_STAIRS = regWithItem("cracked_deepslate_brick_stairs", () ->
-            new CrackedStairsBlock(() -> Blocks.CRACKED_DEEPSLATE_BRICKS, BlockBehaviour.Properties.ofFullCopy(Blocks.CRACKED_DEEPSLATE_BRICKS)));
+            new ModStairBlock(() -> Blocks.CRACKED_DEEPSLATE_BRICKS, BlockBehaviour.Properties.ofFullCopy(Blocks.CRACKED_DEEPSLATE_BRICKS)));
     public static final DeferredBlock<Block> CRACKED_DEEPSLATE_BRICK_SLAB = regWithItem("cracked_deepslate_brick_slab", () ->
-            new CrackedSlabBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CRACKED_DEEPSLATE_BRICKS)));
+            new SlabBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CRACKED_DEEPSLATE_BRICKS)));
     public static final DeferredBlock<Block> CRACKED_DEEPSLATE_BRICK_WALL = regWithItem("cracked_deepslate_brick_wall", () ->
-            new CrackedWallBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CRACKED_DEEPSLATE_BRICKS)));
+            new WallBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CRACKED_DEEPSLATE_BRICKS)));
 
     public static final DeferredBlock<Block> CRACKED_DEEPSLATE_TILE_STAIRS = regWithItem("cracked_deepslate_tile_stairs", () ->
-            new CrackedStairsBlock(() -> Blocks.CRACKED_DEEPSLATE_TILES, BlockBehaviour.Properties.ofFullCopy(Blocks.CRACKED_DEEPSLATE_TILES)));
+            new ModStairBlock(() -> Blocks.CRACKED_DEEPSLATE_TILES, BlockBehaviour.Properties.ofFullCopy(Blocks.CRACKED_DEEPSLATE_TILES)));
     public static final DeferredBlock<Block> CRACKED_DEEPSLATE_TILE_SLAB = regWithItem("cracked_deepslate_tile_slab", () ->
-            new CrackedSlabBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CRACKED_DEEPSLATE_TILES)));
+            new SlabBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CRACKED_DEEPSLATE_TILES)));
     public static final DeferredBlock<Block> CRACKED_DEEPSLATE_TILE_WALL = regWithItem("cracked_deepslate_tile_wall", () ->
-            new CrackedWallBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CRACKED_DEEPSLATE_TILES)));
+            new WallBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CRACKED_DEEPSLATE_TILES)));
 
     public static final DeferredBlock<Block> CRACKED_END_STONE_BRICKS = regWithItem("cracked_end_stone_bricks", () ->
-            new CrackedBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.END_STONE)));
+            new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.END_STONE)));
     public static final DeferredBlock<Block> CRACKED_END_STONE_BRICK_STAIRS = regWithItem("cracked_end_stone_brick_stairs", () ->
-            new CrackedStairsBlock(CRACKED_END_STONE_BRICKS, BlockBehaviour.Properties.ofFullCopy(Blocks.END_STONE)));
+            new ModStairBlock(CRACKED_END_STONE_BRICKS, BlockBehaviour.Properties.ofFullCopy(Blocks.END_STONE)));
     public static final DeferredBlock<Block> CRACKED_END_STONE_BRICK_SLAB = regWithItem("cracked_end_stone_brick_slab", () ->
-            new CrackedSlabBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.END_STONE)));
+            new SlabBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.END_STONE)));
     public static final DeferredBlock<Block> CRACKED_END_STONE_BRICK_WALL = regWithItem("cracked_end_stone_brick_wall", () ->
-            new CrackedWallBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.END_STONE)));
+            new WallBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.END_STONE)));
 
 
     public static final DeferredBlock<Block> CRACKED_PRISMARINE_BRICKS = regWithItem("cracked_prismarine_bricks", () ->
-            new CrackedBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.PRISMARINE)));
+            new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.PRISMARINE)));
     public static final DeferredBlock<Block> CRACKED_PRISMARINE_BRICK_STAIRS = regWithItem("cracked_prismarine_brick_stairs", () ->
-            new CrackedStairsBlock(CRACKED_END_STONE_BRICKS, BlockBehaviour.Properties.ofFullCopy(Blocks.PRISMARINE)));
+            new ModStairBlock(CRACKED_END_STONE_BRICKS, BlockBehaviour.Properties.ofFullCopy(Blocks.PRISMARINE)));
     public static final DeferredBlock<Block> CRACKED_PRISMARINE_BRICK_SLAB = regWithItem("cracked_prismarine_brick_slab", () ->
-            new CrackedSlabBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.PRISMARINE)));
+            new SlabBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.PRISMARINE)));
     public static final DeferredBlock<Block> CRACKED_PRISMARINE_BRICK_WALL = regWithItem("cracked_prismarine_brick_wall", () ->
-            new CrackedWallBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.PRISMARINE)));
+            new WallBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.PRISMARINE)));
 
     //vitrified sand
 
@@ -356,7 +357,7 @@ public class ModBlocks {
             new FrostyGrassBlock(BlockBehaviour.Properties.ofFullCopy(FROSTY_GRASS.get())));
     public static final DeferredBlock<Block> FROSTY_GLASS = regWithItem("frosty_glass", () ->
             new FrostyGlassBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).randomTicks()));
-    public static final DeferredBlock<Block> FROSTY_GLASS_PANE = regWithItem("frosty_glass_pane", () ->
+    public static final DeferredBlock<FrostyGlassPaneBlock> FROSTY_GLASS_PANE = regWithItem("frosty_glass_pane", () ->
             new FrostyGlassPaneBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS_PANE).randomTicks()));
 
 
@@ -554,12 +555,12 @@ public class ModBlocks {
             new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.PRISMARINE)));
 
     public static final DeferredBlock<Block> PRISMARINE_BRICK_WALL = regWithItem("prismarine_brick_wall", () ->
-            new CrackedWallBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.PRISMARINE)));
+            new WallBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.PRISMARINE)));
 
     public static final DeferredBlock<Block> DARK_PRISMARINE_WALL = regWithItem("dark_prismarine_wall", () ->
             new WallBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.DARK_PRISMARINE)));
 
-    public static final DeferredBlock<Block> TINTED_GLASS_PANE = regWithItem("tinted_glass_pane", () ->
+    public static final DeferredBlock<TintedGlassPane> TINTED_GLASS_PANE = regWithItem("tinted_glass_pane", () ->
             new TintedGlassPane(BlockBehaviour.Properties.of().strength(0.3F).sound(SoundType.GLASS).noOcclusion().isRedstoneConductor(NEVER).isSuffocating(NEVER).isViewBlocking(NEVER)));
 
 

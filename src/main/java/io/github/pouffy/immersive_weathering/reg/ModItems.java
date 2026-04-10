@@ -59,6 +59,8 @@ public class ModItems {
 
     public static final DeferredItem<Item> STONE_BRICK = regItem("stone_brick", () ->
             new Item(new Item.Properties()));
+    public static final DeferredItem<Item> TUFF_BRICK = regItem("tuff_brick", () ->
+            new Item(new Item.Properties()));
     public static final DeferredItem<Item> PRISMARINE_BRICK = regItem("prismarine_brick", () ->
             new Item(new Item.Properties()));
     public static final DeferredItem<Item> END_STONE_BRICK = regItem("end_stone_brick", () ->

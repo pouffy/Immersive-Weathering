@@ -1,39 +1,21 @@
 {
   "variants": {
-    "sandiness=0,type=bottom,waterlogged=false": {
+    "sandiness=0,type=bottom": {
       "model": "immersive_weathering:block/sandy_stone_slab_0"
     },
-    "sandiness=0,type=bottom,waterlogged=true": {
-      "model": "immersive_weathering:block/sandy_stone_slab_0"
-    },
-    "sandiness=0,type=double,waterlogged=false": {
+    "sandiness=0,type=double": {
       "model": "immersive_weathering:block/sandy_stone_0"
     },
-    "sandiness=0,type=double,waterlogged=true": {
-      "model": "immersive_weathering:block/sandy_stone_0"
-    },
-    "sandiness=0,type=top,waterlogged=false": {
+    "sandiness=0,type=top": {
       "model": "immersive_weathering:block/sandy_stone_slab_top_0"
     },
-    "sandiness=0,type=top,waterlogged=true": {
-      "model": "immersive_weathering:block/sandy_stone_slab_top_0"
-    },
-    "sandiness=1,type=bottom,waterlogged=false": {
+    "sandiness=1,type=bottom": {
       "model": "immersive_weathering:block/sandy_stone_slab_1"
     },
-    "sandiness=1,type=bottom,waterlogged=true": {
-      "model": "immersive_weathering:block/sandy_stone_slab_1"
-    },
-    "sandiness=1,type=double,waterlogged=false": {
+    "sandiness=1,type=double": {
       "model": "immersive_weathering:block/sandy_stone_1"
     },
-    "sandiness=1,type=double,waterlogged=true": {
-      "model": "immersive_weathering:block/sandy_stone_1"
-    },
-    "sandiness=1,type=top,waterlogged=false": {
-      "model": "immersive_weathering:block/sandy_stone_slab_top_1"
-    },
-    "sandiness=1,type=top,waterlogged=true": {
+    "sandiness=1,type=top": {
       "model": "immersive_weathering:block/sandy_stone_slab_top_1"
     }
   }

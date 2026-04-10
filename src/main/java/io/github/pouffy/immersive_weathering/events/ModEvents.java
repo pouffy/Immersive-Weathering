@@ -1,18 +1,17 @@
 package io.github.pouffy.immersive_weathering.events;
 
 import com.mojang.datafixers.util.Pair;
+import io.github.pouffy.immersive_weathering.api.weathering.operators.WeatheringOperator;
 import io.github.pouffy.immersive_weathering.blocks.ModBlockProperties;
 import io.github.pouffy.immersive_weathering.blocks.charred.CharredBlock;
-import io.github.pouffy.immersive_weathering.blocks.sandy.ISandy;
 import io.github.pouffy.immersive_weathering.configs.CommonConfigs;
 import io.github.pouffy.immersive_weathering.data.block_growths.BlockGrowthHandler;
 import io.github.pouffy.immersive_weathering.data.block_growths.TickSource;
 import io.github.pouffy.immersive_weathering.datamaps.Crackable;
 import io.github.pouffy.immersive_weathering.datamaps.DataMapHelpers;
-import io.github.pouffy.immersive_weathering.datamaps.Mossable;
 import io.github.pouffy.immersive_weathering.datamaps.Rustable;
 import io.github.pouffy.immersive_weathering.reg.*;
-import io.github.pouffy.immersive_weathering.util.Weatherable;
+import io.github.pouffy.immersive_weathering.util.InteractionEvent;
 import io.github.pouffy.immersive_weathering.util.WeatheringHelper;
 import net.mehvahdjukaar.moonlight.api.client.util.ParticleUtil;
 import net.mehvahdjukaar.moonlight.api.events.IFireConsumeBlockEvent;
@@ -27,6 +26,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.util.ParticleUtils;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.InteractionHand;
@@ -38,7 +38,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.WeatheringCopper;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.gameevent.GameEvent;
@@ -52,16 +51,6 @@ import java.util.Optional;
 
 public class ModEvents {
 
-    @FunctionalInterface
-    public interface InteractionEvent {
-        InteractionResult run(Item i, ItemStack stack,
-                              BlockPos pos,
-                              BlockState state,
-                              Player player, Level level,
-                              InteractionHand hand,
-                              BlockHitResult hit);
-    }
-
     private static final List<InteractionEvent> EVENTS = new ArrayList<>();
 
     static {
@@ -74,7 +63,10 @@ public class ModEvents {
         EVENTS.add(ModEvents::rustScraping);
         EVENTS.add(ModEvents::rustSponging);
         EVENTS.add(ModEvents::blockSanding);
+        EVENTS.add(ModEvents::sandShoveling);
         EVENTS.add(ModEvents::blockSnowing);
+        EVENTS.add(ModEvents::snowShoveling);
+        EVENTS.add(ModEvents::frostMelting);
     }
 
     public static InteractionResult onBlockCLicked(ItemStack stack, Player player, Level level, InteractionHand hand, BlockHitResult hitResult) {
@@ -232,7 +224,7 @@ public class ModEvents {
             var previousData = DataMapHelpers.getCrackable(previous.get().getBlock());
             var repairItem = previousData.flatMap(Crackable::repairItem).orElse(null);
             if (repairItem != null && stack.is(repairItem)) {
-                BlockState stableFixed = Weatherable.setStable(previous.get());
+                BlockState stableFixed = WeatheringOperator.setStable(previous.get());
                 if (level.isClientSide) {
                     level.playSound(player, pos, stableFixed.getSoundType().getPlaceSound(), SoundSource.BLOCKS, 1.0f, 1.0f);
                 } else {
@@ -303,7 +295,7 @@ public class ModEvents {
         if (item instanceof FlintAndSteelItem && CommonConfigs.MOSS_BURNING.get()) {
             var unmossed = DataMapHelpers.getPrevious(DataMapHelpers.Type.MOSS, state);
             if (unmossed.isPresent() && unmossed.get() != state) {
-                BlockState stableUnmossed = Weatherable.setStable(unmossed.get());
+                BlockState stableUnmossed = WeatheringOperator.setStable(unmossed.get());
                 if (level.isClientSide) {
                     ParticleUtil.spawnParticlesOnBlockFaces(level, pos, ParticleTypes.FLAME, UniformInt.of(3, 5), -0.05f, 0.05f, false);
                     level.playSound(player, pos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0f, 1.0f);
@@ -379,7 +371,7 @@ public class ModEvents {
     private static InteractionResult blockSanding(Item item, ItemStack stack, BlockPos pos, BlockState state, Player player, Level level, InteractionHand hand, BlockHitResult hitResult) {
 
         var sandy = DataMapHelpers.getPrevious(DataMapHelpers.Type.SAND, state);
-        if (stack.is(ModBlocks.SAND_LAYER_BLOCK.get().asItem()) && (sandy.isPresent() || (state.getBlock() instanceof ISandy && state.getValue(ModBlockProperties.SANDINESS) == 0))) {
+        if (stack.is(ModBlocks.SAND_LAYER_BLOCK.get().asItem()) && (sandy.isPresent() || (state.hasProperty(ModBlockProperties.SANDINESS) && state.getValue(ModBlockProperties.SANDINESS) == 0))) {
             level.playSound(player, pos, SoundEvents.SAND_PLACE, SoundSource.BLOCKS, 1.0f, 1.0f);
             ParticleUtils.spawnParticlesOnBlockFaces(level, pos, new BlockParticleOption(ParticleTypes.FALLING_DUST, Blocks.SAND.defaultBlockState()), UniformInt.of(3, 5));
             stack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(hand));
@@ -398,8 +390,27 @@ public class ModEvents {
         return InteractionResult.PASS;
     }
 
-    private static InteractionResult blockSnowing(Item item, ItemStack stack, BlockPos pos, BlockState state, Player player, Level level, InteractionHand hand, BlockHitResult hitResult) {
+    private static InteractionResult sandShoveling(Item item, ItemStack stack, BlockPos pos, BlockState state, Player player, Level level, InteractionHand hand, BlockHitResult hitResult) {
+        var unSandy = DataMapHelpers.getPrevious(DataMapHelpers.Type.SAND, state);
+        if (unSandy.isPresent() && stack.is(ItemTags.SHOVELS)) {
+            level.playSound(player, pos, SoundEvents.SAND_BREAK, SoundSource.BLOCKS, 1.0f, 1.0f);
+            ParticleUtils.spawnParticlesOnBlockFaces(level, pos, new BlockParticleOption(ParticleTypes.FALLING_DUST, Blocks.SAND.defaultBlockState()), UniformInt.of(3, 5));
+            stack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(hand));
+            if (player instanceof ServerPlayer serverPlayer) {
+                level.setBlockAndUpdate(pos, unSandy.get());
+                if (state.getValue(ModBlockProperties.SANDINESS) == 0) level.setBlockAndUpdate(pos, unSandy.get());
+                if (state.getValue(ModBlockProperties.SANDINESS) == 1) level.setBlockAndUpdate(pos, state.setValue(ModBlockProperties.SANDINESS, 0));
+                if (!player.isCreative() || CommonConfigs.CREATIVE_DROP.get())
+                    Block.popResourceFromFace(level, pos, hitResult.getDirection(), new ItemStack(ModBlocks.SAND_LAYER_BLOCK.get()));
+                CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, pos, stack);
+                player.awardStat(Stats.ITEM_USED.get(stack.getItem()));
+            }
+            return InteractionResult.sidedSuccess(level.isClientSide);
+        }
+        return InteractionResult.PASS;
+    }
 
+    private static InteractionResult blockSnowing(Item item, ItemStack stack, BlockPos pos, BlockState state, Player player, Level level, InteractionHand hand, BlockHitResult hitResult) {
         var snowy = DataMapHelpers.getNext(DataMapHelpers.Type.SNOW, state);
         if (stack.is(Items.SNOWBALL) && snowy.isPresent()) {
             level.playSound(player, pos, SoundEvents.SNOW_PLACE, SoundSource.BLOCKS, 1.0f, 1.0f);
@@ -409,6 +420,40 @@ public class ModEvents {
                 CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, pos, stack);
                 if (!player.getAbilities().instabuild) stack.shrink(1);
                 level.setBlockAndUpdate(pos, snowy.get());
+                player.awardStat(Stats.ITEM_USED.get(stack.getItem()));
+            }
+            return InteractionResult.sidedSuccess(level.isClientSide);
+        }
+        return InteractionResult.PASS;
+    }
+
+    private static InteractionResult snowShoveling(Item item, ItemStack stack, BlockPos pos, BlockState state, Player player, Level level, InteractionHand hand, BlockHitResult hitResult) {
+        var unSnowy = DataMapHelpers.getPrevious(DataMapHelpers.Type.SNOW, state);
+        if (unSnowy.isPresent() && stack.is(ItemTags.SHOVELS)) {
+            level.playSound(player, pos, SoundEvents.SNOW_BREAK, SoundSource.BLOCKS, 1.0f, 1.0f);
+            ParticleUtils.spawnParticlesOnBlockFaces(level, pos, new BlockParticleOption(ParticleTypes.FALLING_DUST, Blocks.SNOW.defaultBlockState()), UniformInt.of(3, 5));
+            stack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(hand));
+            if (player instanceof ServerPlayer serverPlayer) {
+                level.setBlockAndUpdate(pos, unSnowy.get());
+                if (!player.isCreative() || CommonConfigs.CREATIVE_DROP.get())
+                    Block.popResourceFromFace(level, pos, hitResult.getDirection(), new ItemStack(Items.SNOWBALL));
+                CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, pos, stack);
+                player.awardStat(Stats.ITEM_USED.get(stack.getItem()));
+            }
+            return InteractionResult.sidedSuccess(level.isClientSide);
+        }
+        return InteractionResult.PASS;
+    }
+
+    private static InteractionResult frostMelting(Item item, ItemStack stack, BlockPos pos, BlockState state, Player player, Level level, InteractionHand hand, BlockHitResult hitResult) {
+        var unFrosted = DataMapHelpers.getPrevious(DataMapHelpers.Type.FROST, state);
+        if (unFrosted.isPresent() && stack.is(ItemTags.CREEPER_IGNITERS)) {
+            level.playSound(player, pos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0f, 1.0f);
+            if (level.isClientSide()) ParticleUtil.spawnParticlesOnBlockFaces(level, pos, ParticleTypes.SMOKE, UniformInt.of(3, 5), -0.05f, 0.05f, false);
+            if (player instanceof ServerPlayer) {
+                if (!player.getAbilities().instabuild) stack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(hand));
+                level.setBlockAndUpdate(pos, unFrosted.get());
+                level.gameEvent(player, GameEvent.SHEAR, pos);
                 player.awardStat(Stats.ITEM_USED.get(stack.getItem()));
             }
             return InteractionResult.sidedSuccess(level.isClientSide);

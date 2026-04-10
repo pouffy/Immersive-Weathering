@@ -9,7 +9,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 
 import java.util.Locale;
-import java.util.Optional;
 
 public interface Weatherable {
     EnumProperty<WeatheringState> WEATHERABLE = EnumProperty.create("weathering", WeatheringState.class);
@@ -38,8 +37,6 @@ public interface Weatherable {
     boolean shouldWeather(BlockState state, BlockPos pos, Level level);
 
     boolean isWeathering(BlockState state);
-
-    <T extends Enum<?>> Optional<PatchSpreader<T>> getPatchSpreader(Class<T> weatheringClass);
 
     default float getWeatherChanceSpeed(){
         return 0.1f;
@@ -77,10 +74,4 @@ public interface Weatherable {
         }
     }
 
-    static BlockState setStable(BlockState state){
-        if(state.hasProperty(Weatherable.WEATHERABLE)){
-            state = state.setValue(Weatherable.WEATHERABLE, WeatheringState.STABLE);
-        }
-        return state;
-    }
 }

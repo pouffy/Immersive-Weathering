@@ -1,5 +1,6 @@
 package io.github.pouffy.immersive_weathering.blocks.frosted;
 
+import io.github.pouffy.immersive_weathering.blocks.ModBlockProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -18,23 +19,18 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.phys.BlockHitResult;
 
-public class FrostyGlassPaneBlock extends IronBarsBlock implements Frosty {
+public class FrostyGlassPaneBlock extends IronBarsBlock {
 
     public FrostyGlassPaneBlock(Properties settings) {
         super(settings);
         this.registerDefaultState(this.defaultBlockState()
-                .setValue(WATERLOGGED,false).setValue(NATURAL, false));
+                .setValue(WATERLOGGED,false).setValue(ModBlockProperties.NATURAL, false));
     }
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         super.createBlockStateDefinition(builder);
-        builder.add(NATURAL);
-    }
-
-    @Override
-    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        tryUnFrost(state, level, pos);
+        builder.add(ModBlockProperties.NATURAL);
     }
 
     @Override
@@ -46,14 +42,6 @@ public class FrostyGlassPaneBlock extends IronBarsBlock implements Frosty {
     public boolean hidesNeighborFace(BlockGetter level, BlockPos pos, BlockState state, BlockState neighborState, Direction dir) {
         if (neighborState.is(this) || neighborState.is(Blocks.GLASS)) return true;
         return false;
-    }
-
-    @Override
-    public ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        ItemInteractionResult success = interactWithPlayer(stack, state, level, pos, player, hand);
-        if (success != ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION) return success;
-
-        return super.useItemOn(stack, state, level, pos, player, hand, hit);
     }
 
 }

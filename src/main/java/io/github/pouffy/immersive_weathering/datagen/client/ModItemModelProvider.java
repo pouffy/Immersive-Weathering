@@ -40,6 +40,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         flowerCrown(ModItems.FLOWER_CROWN);
 
         basicItem(ModItems.STONE_BRICK.get());
+        basicItem(ModItems.TUFF_BRICK.get());
         basicItem(ModItems.PRISMARINE_BRICK.get());
         basicItem(ModItems.END_STONE_BRICK.get());
         basicItem(ModItems.BLACKSTONE_BRICK.get());
@@ -54,12 +55,20 @@ public class ModItemModelProvider extends ItemModelProvider {
         this.basicItem(ModBlocks.WEEDS::asItem, "immersive_weathering:block/weeds_0");
         this.basicItem(ModBlocks.IVY::asItem, "immersive_weathering:item/ivy_item");
         this.basicItem(ModBlocks.DUNE_GRASS::asItem, "immersive_weathering:item/dune_grass");
+        this.basicItem(ModBlocks.SOOT::asItem, "immersive_weathering:block/soot");
+        this.basicItem(ModBlocks.FROSTY_GLASS_PANE::asItem, "immersive_weathering:block/frosty_glass");
+        this.basicItem(ModBlocks.TINTED_GLASS_PANE::asItem, "minecraft:block/tinted_glass");
 
         this.withExistingParent("sandy_dirt", "immersive_weathering:block/sandy_dirt");
         this.withExistingParent("grassy_sandy_dirt", "immersive_weathering:block/grassy_sandy_dirt");
         this.withExistingParent("silt", "immersive_weathering:block/silt");
         this.withExistingParent("grassy_silt", "immersive_weathering:block/grassy_silt");
         this.withExistingParent("grassy_permafrost", "immersive_weathering:block/grassy_permafrost");
+        this.withExistingParent("thin_ice", "immersive_weathering:block/thin_ice_inventory");
+
+        basicItem(ModBlocks.FULGURITE::asItem, "immersive_weathering:block/fulgurite").transforms()
+                .transform(ItemDisplayContext.HEAD)
+                .translation(0, 14, -5).end();
 
         basicItem(ModBlocks.ICICLE.asItem()).transforms()
                 .transform(ItemDisplayContext.FIRST_PERSON_RIGHT_HAND)

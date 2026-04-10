@@ -23,11 +23,12 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
 public class CampfireSootGrowth implements IBlockGrowth {
 
     public static final MapCodec<CampfireSootGrowth> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
-            RegistryCodecs.homogeneousList(Registries.BLOCK).optionalFieldOf("owners", HolderSet.empty()).forGetter(b -> b.owners),
+            RegistryCodecs.homogeneousList(Registries.BLOCK).optionalFieldOf("owners").forGetter(b -> Optional.ofNullable(b.owners)),
             TickSource.CODEC.listOf().optionalFieldOf("tick_sources", List.of(TickSource.BLOCK_TICK)).forGetter(b -> b.sources),
             Codec.FLOAT.optionalFieldOf("growth_chance", 1f).forGetter(b -> b.growthChance)
     ).apply(instance, CampfireSootGrowth::new));
@@ -38,10 +39,14 @@ public class CampfireSootGrowth implements IBlockGrowth {
 
     public static final Type<CampfireSootGrowth> TYPE = new Type<>(CODEC, "campfire_soot");
 
-    public CampfireSootGrowth(HolderSet<Block> owners, List<TickSource> sources, float growthChance) {
-        this.owners = owners;
+    public CampfireSootGrowth(Optional<HolderSet<Block>> owners, List<TickSource> sources, float growthChance) {
+        this.owners = owners.orElse(null);
         this.sources = sources;
         this.growthChance = growthChance;
+    }
+
+    public CampfireSootGrowth(HolderSet<Block> owners, List<TickSource> sources, float growthChance) {
+        this(Optional.of(owners), sources, growthChance);
     }
 
     @Override
@@ -51,8 +56,8 @@ public class CampfireSootGrowth implements IBlockGrowth {
 
     @Override
     public @Nullable Iterable<? extends Block> getOwners() {
-        if (owners.equals(HolderSet.empty())) return null;
-        return this.owners.stream().map(Holder::value).toList();
+        if (owners == null) return null;
+        return this.owners.stream().map(Holder::value).collect(Collectors.toList());
     }
 
     @Override

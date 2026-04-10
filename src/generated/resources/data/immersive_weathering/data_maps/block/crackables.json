@@ -127,6 +127,22 @@
     "minecraft:stone_bricks": {
       "next_stage": "minecraft:cracked_stone_bricks",
       "repair_item": "immersive_weathering:stone_brick"
+    },
+    "minecraft:tuff_brick_slab": {
+      "next_stage": "immersive_weathering:cracked_tuff_brick_slab",
+      "repair_item": "immersive_weathering:tuff_brick"
+    },
+    "minecraft:tuff_brick_stairs": {
+      "next_stage": "immersive_weathering:cracked_tuff_brick_stairs",
+      "repair_item": "immersive_weathering:tuff_brick"
+    },
+    "minecraft:tuff_brick_wall": {
+      "next_stage": "immersive_weathering:cracked_tuff_brick_wall",
+      "repair_item": "immersive_weathering:tuff_brick"
+    },
+    "minecraft:tuff_bricks": {
+      "next_stage": "immersive_weathering:cracked_tuff_bricks",
+      "repair_item": "immersive_weathering:tuff_brick"
     }
   }
 }

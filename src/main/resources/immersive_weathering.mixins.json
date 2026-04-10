@@ -6,6 +6,8 @@
   "mixins": [
     "AttachedStemBlockMixin",
     "BeeMixin",
+    "BlockBehaviourMixin",
+    "BlockMixin",
     "BubbleColumnMixin",
     "BushBlockMixin",
     "CampfireMixin",

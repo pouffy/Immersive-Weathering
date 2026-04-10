@@ -16,7 +16,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.phys.BlockHitResult;
 
-public class SandySlabBlock extends SlabBlock implements ISandy {
+public class SandySlabBlock extends SlabBlock {
 
     public SandySlabBlock(Properties properties) {
         super(properties);
@@ -26,29 +26,6 @@ public class SandySlabBlock extends SlabBlock implements ISandy {
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> stateManager) {
         super.createBlockStateDefinition(stateManager);
-        stateManager.add(ModBlockProperties.SANDINESS, SAND_AGE);
-    }
-
-    @Override
-    public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
-        this.spawnParticles(state, level, pos, random);
-    }
-
-    @Override
-    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        ISandy.super.randomTick(state, level, pos, random);
-    }
-
-    @Override
-    public ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
-        if (interactWithPlayer(stack, state, level, pos, player, hand, hitResult)) {
-            return ItemInteractionResult.SUCCESS;
-        }
-        return super.useItemOn(stack, state, level, pos, player, hand, hitResult);
-    }
-
-    @Override
-    public void neighborChanged(BlockState state, Level level, BlockPos pos, Block block, BlockPos neighborPos, boolean isMoving) {
-        ISandy.super.neighborChanged(state, level, pos, block, neighborPos, isMoving);
+        stateManager.add(ModBlockProperties.SANDINESS, ModBlockProperties.SAND_AGE);
     }
 }

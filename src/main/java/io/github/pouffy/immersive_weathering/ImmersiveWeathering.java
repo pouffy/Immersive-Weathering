@@ -78,6 +78,7 @@ public class ImmersiveWeathering {
         ModCreativeTab.init();
 
         NetworkHandler.init();
+        ModRegistries.staticInit();
 
         ModBlocks.staticInit();
         ModItems.staticInit();
@@ -86,6 +87,8 @@ public class ImmersiveWeathering {
         ModRuleTests.staticInit();
         ModFeatures.staticInit();
         ModSoundEvents.staticInit();
+        ModSpreaders.staticInit();
+        ModWeatheringOperators.staticInit();
 
         modEventBus.addListener(ImmersiveWeatheringDataGen::gatherData);
         modEventBus.register(this);

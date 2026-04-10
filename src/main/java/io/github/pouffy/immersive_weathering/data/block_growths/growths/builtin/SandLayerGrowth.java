@@ -4,7 +4,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import io.github.pouffy.immersive_weathering.blocks.LayerBlock;
-import io.github.pouffy.immersive_weathering.blocks.sandy.ISandy;
+import io.github.pouffy.immersive_weathering.blocks.ModBlockProperties;
 import io.github.pouffy.immersive_weathering.data.block_growths.TickSource;
 import io.github.pouffy.immersive_weathering.data.block_growths.growths.IBlockGrowth;
 import io.github.pouffy.immersive_weathering.datamaps.DataMapHelpers;
@@ -81,8 +81,8 @@ public class SandLayerGrowth implements IBlockGrowth {
             RandomSource random = level.random;
             int rand = random.nextInt(2);
             int rand2 = random.nextInt(5);
-            if (state.hasProperty(ISandy.SANDINESS) && state.hasProperty(ISandy.SAND_AGE))
-                level.setBlockAndUpdate(belowPos, sandyBlock.get().setValue(ISandy.SANDINESS, rand).setValue(ISandy.SAND_AGE, rand2));
+            if (state.hasProperty(ModBlockProperties.SANDINESS) && state.hasProperty(ModBlockProperties.SAND_AGE))
+                level.setBlockAndUpdate(belowPos, sandyBlock.get().setValue(ModBlockProperties.SANDINESS, rand).setValue(ModBlockProperties.SAND_AGE, rand2));
             level.setBlockAndUpdate(pos, state.setValue(LayerBlock.LAYERS_8, getAge(state) - 1));
         }
     }

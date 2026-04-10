@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "immersive_weathering:block/sandy_cobblestone_1",
+    "side": "immersive_weathering:block/sandy_cobblestone_1",
+    "top": "immersive_weathering:block/sandy_cobblestone_1"
+  }
+}
