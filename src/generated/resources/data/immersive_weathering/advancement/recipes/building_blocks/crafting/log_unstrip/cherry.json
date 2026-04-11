@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_bark": {
+      "conditions": {
+        "items": [
+          {
+            "items": "immersive_weathering:cherry_bark"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "immersive_weathering:crafting/log_unstrip/cherry"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_bark"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "immersive_weathering:crafting/log_unstrip/cherry"
+    ]
+  }
+}

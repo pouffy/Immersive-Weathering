@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_soot": {
+      "conditions": {
+        "items": [
+          {
+            "items": "immersive_weathering:soot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "immersive_weathering:crafting/misc/black_dye_from_soot"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_soot"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "immersive_weathering:crafting/misc/black_dye_from_soot"
+    ]
+  }
+}

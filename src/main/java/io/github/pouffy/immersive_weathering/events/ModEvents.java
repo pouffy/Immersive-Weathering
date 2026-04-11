@@ -370,7 +370,7 @@ public class ModEvents {
 
     private static InteractionResult blockSanding(Item item, ItemStack stack, BlockPos pos, BlockState state, Player player, Level level, InteractionHand hand, BlockHitResult hitResult) {
 
-        var sandy = DataMapHelpers.getPrevious(DataMapHelpers.Type.SAND, state);
+        var sandy = DataMapHelpers.getNext(DataMapHelpers.Type.SAND, state);
         if (stack.is(ModBlocks.SAND_LAYER_BLOCK.get().asItem()) && (sandy.isPresent() || (state.hasProperty(ModBlockProperties.SANDINESS) && state.getValue(ModBlockProperties.SANDINESS) == 0))) {
             level.playSound(player, pos, SoundEvents.SAND_PLACE, SoundSource.BLOCKS, 1.0f, 1.0f);
             ParticleUtils.spawnParticlesOnBlockFaces(level, pos, new BlockParticleOption(ParticleTypes.FALLING_DUST, Blocks.SAND.defaultBlockState()), UniformInt.of(3, 5));

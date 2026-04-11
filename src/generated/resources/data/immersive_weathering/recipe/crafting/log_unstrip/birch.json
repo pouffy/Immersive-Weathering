@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "log_unstrip",
+  "ingredients": [
+    {
+      "item": "immersive_weathering:birch_bark"
+    },
+    {
+      "item": "minecraft:stripped_birch_log"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:birch_log"
+  }
+}

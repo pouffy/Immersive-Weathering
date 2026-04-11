@@ -21,6 +21,7 @@ import net.neoforged.neoforge.common.data.LanguageProvider;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
 import java.util.NoSuchElementException;
+import java.util.Set;
 import java.util.function.Supplier;
 
 public class ModLanguageProvider extends LanguageProvider {
@@ -30,11 +31,16 @@ public class ModLanguageProvider extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
+        Set<Holder<Block>> blockOverrides = Set.of(
+                ModBlocks.SAND_LAYER_BLOCK, ModBlocks.RED_SAND_LAYER_BLOCK
+        );
+
         for (DeferredHolder<Item, ? extends Item> registry : ModItems.getItems()) {
             if (registry.get() instanceof BlockItem) continue;
             this.item(registry);
         }
         for (DeferredHolder<Block, ? extends Block> registry : ModBlocks.getBlocks()) {
+            if (blockOverrides.contains(registry)) continue;
             this.block(registry);
         }
         WoodTypeRegistry.INSTANCE.forEach(type -> {
@@ -43,6 +49,9 @@ public class ModLanguageProvider extends LanguageProvider {
         LeavesTypeRegistry.INSTANCE.forEach(type -> {
             this.block(ModBlocks.LEAF_PILES.get(type).builtInRegistryHolder());
         });
+
+        this.addBlock(ModBlocks.SAND_LAYER_BLOCK, "Sand Pile");
+        this.addBlock(ModBlocks.RED_SAND_LAYER_BLOCK, "Red Sand Pile");
 
         for (Pair<TagKey<Item>, String> tag : ModTags.ITEM_TAGS) {
             ResourceLocation tagId = tag.getFirst().location();
@@ -56,6 +65,11 @@ public class ModLanguageProvider extends LanguageProvider {
             ResourceLocation id = entry.getFirst().get().getLocation();
             super.add("%s.subtitle.%s".formatted(id.getNamespace(), id.getPath()), entry.getSecond());
         }
+
+        this.add("tooltip.immersive_weathering.adjacent", "Placed next to flowing lava");
+        this.add("tooltip.immersive_weathering.below", "Placed below flowing lava");
+        this.add("tooltip.immersive_weathering.rising", "Rising Bubble Column");
+        this.add("tooltip.immersive_weathering.sinking", "Sinking Bubble Column");
     }
 
     private void tab(Holder<CreativeModeTab> tabHolder) {

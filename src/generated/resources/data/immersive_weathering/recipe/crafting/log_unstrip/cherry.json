@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "log_unstrip",
+  "ingredients": [
+    {
+      "item": "immersive_weathering:cherry_bark"
+    },
+    {
+      "item": "minecraft:stripped_cherry_log"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:cherry_log"
+  }
+}

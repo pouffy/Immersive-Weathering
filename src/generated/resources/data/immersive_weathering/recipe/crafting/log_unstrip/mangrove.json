@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "log_unstrip",
+  "ingredients": [
+    {
+      "item": "immersive_weathering:mangrove_bark"
+    },
+    {
+      "item": "minecraft:stripped_mangrove_log"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:mangrove_log"
+  }
+}

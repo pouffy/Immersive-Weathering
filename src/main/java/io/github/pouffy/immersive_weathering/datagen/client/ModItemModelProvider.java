@@ -58,6 +58,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         this.basicItem(ModBlocks.SOOT::asItem, "immersive_weathering:block/soot");
         this.basicItem(ModBlocks.FROSTY_GLASS_PANE::asItem, "immersive_weathering:block/frosty_glass");
         this.basicItem(ModBlocks.TINTED_GLASS_PANE::asItem, "minecraft:block/tinted_glass");
+        this.basicItem(ModBlocks.SAND_LAYER_BLOCK::asItem, "immersive_weathering:item/sand");
+        this.basicItem(ModBlocks.RED_SAND_LAYER_BLOCK::asItem, "immersive_weathering:item/red_sand");
 
         this.withExistingParent("sandy_dirt", "immersive_weathering:block/sandy_dirt");
         this.withExistingParent("grassy_sandy_dirt", "immersive_weathering:block/grassy_sandy_dirt");

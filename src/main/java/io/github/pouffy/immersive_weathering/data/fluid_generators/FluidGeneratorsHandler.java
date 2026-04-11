@@ -44,6 +44,14 @@ public class FluidGeneratorsHandler extends RegistryAccessJsonReloadListener {
     private static final Map<Fluid, ImmutableList<IFluidGenerator>> FLOWING_GENERATORS = new Object2ObjectOpenHashMap<>();
     private static final Set<Fluid> HAS_GENERATOR = new HashSet<>();
 
+    public static Map<Fluid, ImmutableList<IFluidGenerator>> getStillGenerators() {
+        return STILL_GENERATORS;
+    }
+
+    public static Map<Fluid, ImmutableList<IFluidGenerator>> getFlowingGenerators() {
+        return FLOWING_GENERATORS;
+    }
+
     public FluidGeneratorsHandler() {
         super(GSON, "fluid_generators");
     }

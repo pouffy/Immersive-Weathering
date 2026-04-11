@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:stonecutting",
+  "group": "iw_brick",
+  "ingredient": {
+    "item": "minecraft:polished_blackstone"
+  },
+  "result": {
+    "count": 16,
+    "id": "immersive_weathering:blackstone_brick"
+  }
+}

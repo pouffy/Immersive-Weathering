@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "wood_from_bark",
+  "ingredients": [
+    {
+      "item": "immersive_weathering:cherry_bark"
+    },
+    {
+      "item": "minecraft:cherry_log"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:cherry_wood"
+  }
+}

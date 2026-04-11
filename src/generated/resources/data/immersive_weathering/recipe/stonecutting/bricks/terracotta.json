@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:stonecutting",
+  "group": "iw_brick",
+  "ingredient": {
+    "item": "minecraft:bricks"
+  },
+  "result": {
+    "count": 4,
+    "id": "minecraft:brick"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "leaf_pile",
+  "key": {
+    "#": {
+      "item": "immersive_weathering:azalea_flowers"
+    }
+  },
+  "pattern": [
+    "###"
+  ],
+  "result": {
+    "count": 6,
+    "id": "immersive_weathering:azalea_flower_pile"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:stonecutting",
+  "group": "iw_brick",
+  "ingredient": {
+    "item": "minecraft:end_stone"
+  },
+  "result": {
+    "count": 16,
+    "id": "immersive_weathering:end_stone_brick"
+  }
+}

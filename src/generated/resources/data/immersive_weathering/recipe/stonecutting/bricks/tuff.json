@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:stonecutting",
+  "group": "iw_brick",
+  "ingredient": {
+    "item": "minecraft:tuff"
+  },
+  "result": {
+    "count": 16,
+    "id": "immersive_weathering:tuff_brick"
+  }
+}

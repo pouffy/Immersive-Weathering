@@ -1,6 +1,7 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "misc",
+  "group": "leaf_pile",
   "key": {
     "#": {
       "item": "minecraft:flowering_azalea_leaves"

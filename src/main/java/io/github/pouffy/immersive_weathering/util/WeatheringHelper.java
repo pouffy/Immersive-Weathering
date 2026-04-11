@@ -14,6 +14,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.Item;
@@ -200,6 +201,20 @@ public class WeatheringHelper {
     }
 
     public static void onFireExpired(ServerLevel serverLevel, BlockPos pos, BlockState state) {
+    }
+
+    public static final Supplier<Map<TagKey<Block>, Block>> WOOD_TO_CHARRED = Suppliers.memoize(() ->
+            ImmutableMap.<TagKey<Block>, Block>builder()
+                    .put(BlockTags.WOODEN_FENCES, ModBlocks.CHARRED_FENCE.get())
+                    .put(BlockTags.FENCE_GATES, ModBlocks.CHARRED_FENCE_GATE.get())
+                    .put(BlockTags.WOODEN_SLABS, ModBlocks.CHARRED_SLAB.get())
+                    .put(BlockTags.WOODEN_STAIRS, ModBlocks.CHARRED_STAIRS.get())
+                    .put(BlockTags.PLANKS, ModBlocks.CHARRED_PLANKS.get())
+                    .put(BlockTags.LOGS_THAT_BURN, ModBlocks.CHARRED_LOG.get())
+                    .build());
+
+    public static Optional<Block> getCharredBlock(TagKey<Block> block) {
+        return Optional.ofNullable(WOOD_TO_CHARRED.get().get(block));
     }
 
     @Nullable

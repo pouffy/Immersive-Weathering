@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "wood_unstrip",
+  "ingredients": [
+    {
+      "item": "immersive_weathering:jungle_bark"
+    },
+    {
+      "item": "minecraft:stripped_jungle_wood"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:jungle_wood"
+  }
+}

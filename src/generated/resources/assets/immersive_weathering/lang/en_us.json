@@ -95,7 +95,7 @@
   "block.immersive_weathering.plate_iron_slab": "Plate Iron Slab",
   "block.immersive_weathering.plate_iron_stairs": "Plate Iron Stairs",
   "block.immersive_weathering.prismarine_brick_wall": "Prismarine Brick Wall",
-  "block.immersive_weathering.red_sand_layer_block": "Red Sand Layer Block",
+  "block.immersive_weathering.red_sand_layer_block": "Red Sand Pile",
   "block.immersive_weathering.rooted_grass_block": "Rooted Grass Block",
   "block.immersive_weathering.rusted_cut_iron": "Rusted Cut Iron",
   "block.immersive_weathering.rusted_cut_iron_slab": "Rusted Cut Iron Slab",
@@ -106,7 +106,7 @@
   "block.immersive_weathering.rusted_plate_iron": "Rusted Plate Iron",
   "block.immersive_weathering.rusted_plate_iron_slab": "Rusted Plate Iron Slab",
   "block.immersive_weathering.rusted_plate_iron_stairs": "Rusted Plate Iron Stairs",
-  "block.immersive_weathering.sand_layer_block": "Sand Layer Block",
+  "block.immersive_weathering.sand_layer_block": "Sand Pile",
   "block.immersive_weathering.sandy_chiseled_stone_bricks": "Sandy Chiseled Stone Bricks",
   "block.immersive_weathering.sandy_cobblestone": "Sandy Cobblestone",
   "block.immersive_weathering.sandy_cobblestone_slab": "Sandy Cobblestone Slab",
@@ -219,5 +219,9 @@
   "itemGroup.immersive_weathering.immersive_weathering": "Immersive Weathering",
   "tag.item.immersive_weathering.bark": "Bark",
   "tag.item.immersive_weathering.scales": "Scales",
-  "tag.item.immersive_weathering.stripped_wood": "Stripped Wood"
+  "tag.item.immersive_weathering.stripped_wood": "Stripped Wood",
+  "tooltip.immersive_weathering.adjacent": "Placed next to flowing lava",
+  "tooltip.immersive_weathering.below": "Placed below flowing lava",
+  "tooltip.immersive_weathering.rising": "Rising Bubble Column",
+  "tooltip.immersive_weathering.sinking": "Sinking Bubble Column"
 }
