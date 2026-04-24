@@ -68,6 +68,10 @@ public class ModItemModelProvider extends ItemModelProvider {
         this.withExistingParent("grassy_permafrost", "immersive_weathering:block/grassy_permafrost");
         this.withExistingParent("thin_ice", "immersive_weathering:block/thin_ice_inventory");
 
+        this.withExistingParent("mulch_block", "immersive_weathering:block/mulch_block");
+        this.withExistingParent("nulch_block", "immersive_weathering:block/nulch_block");
+        this.withExistingParent("rooted_grass_block", "immersive_weathering:block/rooted_grass_block");
+
         basicItem(ModBlocks.FULGURITE::asItem, "immersive_weathering:block/fulgurite").transforms()
                 .transform(ItemDisplayContext.HEAD)
                 .translation(0, 14, -5).end();

@@ -9,9 +9,11 @@ import io.github.pouffy.immersive_weathering.blocks.sandy.SandyBlock;
 import io.github.pouffy.immersive_weathering.blocks.sandy.SandyWallBlock;
 import io.github.pouffy.immersive_weathering.blocks.soil_types.EarthenClayBlock;
 import io.github.pouffy.immersive_weathering.blocks.soil_types.EarthenClayBlockGrassy;
+import io.github.pouffy.immersive_weathering.blocks.soil_types.ModFarmlandBlock;
 import io.github.pouffy.immersive_weathering.reg.ModBlocks;
 import net.minecraft.Util;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.models.blockstates.Condition;
@@ -20,10 +22,12 @@ import net.minecraft.data.models.blockstates.Variant;
 import net.minecraft.data.models.model.ModelLocationUtils;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.*;
 import net.neoforged.neoforge.client.model.generators.*;
 import net.neoforged.neoforge.common.DataMapHooks;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.registries.DeferredBlock;
 
 import java.util.Map;
 import java.util.function.BiFunction;
@@ -334,6 +338,97 @@ public class ModBlockStateProvider extends BlockStateProvider {
             var model = this.models().withExistingParent("thin_ice_" + cracked, ImmersiveWeathering.res("block/thin_ice_template")).texture("texture", ImmersiveWeathering.res("block/thin_ice_" + cracked));
             return ConfiguredModel.builder().modelFile(model).build();
         });
+
+        this.getVariantBuilder(ModBlocks.MULCH_BLOCK.get()).forAllStatesExcept((state) -> {
+            boolean soaked = state.getValue(BlockStateProperties.WATERLOGGED);
+            var texture = ImmersiveWeathering.res("block/mulch_block" + (soaked ? "_soaked" : ""));
+            return ConfiguredModel.builder().modelFile(this.models().cubeAll("mulch_block" + (soaked ? "_soaked" : ""), texture)).build();
+        });
+        this.getVariantBuilder(ModBlocks.NULCH_BLOCK.get()).forAllStatesExcept((state) -> {
+            boolean soaked = state.getValue(ModBlockProperties.MOLTEN);
+            var texture = ImmersiveWeathering.res("block/nulch_block" + (soaked ? "_molten" : ""));
+            return ConfiguredModel.builder().modelFile(this.models().cubeAll("nulch_block" + (soaked ? "_molten" : ""), texture)).build();
+        });
+
+        this.getVariantBuilder(ModBlocks.ROOTED_GRASS_BLOCK.get()).forAllStatesExcept((state) -> {
+            boolean snowy = state.getValue(SnowyDirtBlock.SNOWY);
+            var top = ImmersiveWeathering.res("minecraft:block/grass_block_top");
+            var side = ImmersiveWeathering.res("block/rooted_grass_block_side");
+            var bottom = ImmersiveWeathering.res("minecraft:block/rooted_dirt");
+            var model = this.models().withExistingParent("rooted_grass_block", ImmersiveWeathering.res("block/grassy_block"))
+                    .texture("particle", bottom)
+                    .texture("top", top)
+                    .texture("top_overlay", top)
+                    .texture("bottom", bottom)
+                    .texture("side", side)
+                    .texture("side_overlay", ImmersiveWeathering.res("block/grass_overlay"));
+            var snowyModel = this.models().cubeBottomTop("rooted_grass_block_snowy", ImmersiveWeathering.res("block/rooted_grass_block_snow"), bottom, ImmersiveWeathering.res("block/rooted_grass_block_top"));
+            if (snowy) {
+                return ConfiguredModel.builder().modelFile(snowyModel).build();
+            }
+            return ConfiguredModel.builder().modelFile(model).nextModel().modelFile(model).rotationY(90).nextModel().modelFile(model).rotationY(180).nextModel().modelFile(model).rotationY(270).build();
+        });
+
+        farmland(ModBlocks.EARTHEN_CLAY_FARMLAND, (state, name) -> {var builder = ConfiguredModel.builder();
+            builder.modelFile(this.models().withExistingParent(name, ImmersiveWeathering.res("minecraft:block/template_farmland"))
+                    .element().from(0, 0, 0).to(16, 15, 16)
+                    .face(Direction.DOWN).uvs(0, 0, 16, 16).texture("#bottom").cullface(Direction.DOWN).end()
+                    .face(Direction.UP).uvs(0, 0, 16, 16).texture("#top").end()
+                    .face(Direction.NORTH).uvs(0, 1, 16, 16).texture("#dirt").cullface(Direction.NORTH).end()
+                    .face(Direction.SOUTH).uvs(0, 1, 16, 16).texture("#dirt").cullface(Direction.SOUTH).end()
+                    .face(Direction.WEST).uvs(0, 1, 16, 16).texture("#dirt").cullface(Direction.WEST).end()
+                    .face(Direction.EAST).uvs(0, 1, 16, 16).texture("#dirt").cullface(Direction.EAST).end().end()
+                    .texture("dirt", ImmersiveWeathering.res("block/earthen_clay_side"))
+                    .texture("top", ImmersiveWeathering.res("block/earthen_clay_farmland"))
+                    .texture("bottom", ImmersiveWeathering.res("block/earthen_clay_bottom"))
+            );
+            return builder;}, (state, name) -> {var builder = ConfiguredModel.builder();
+            builder.modelFile(this.models().withExistingParent(name + "_moist", ImmersiveWeathering.res("minecraft:block/template_farmland"))
+                    .element().from(0, 0, 0).to(16, 15, 16)
+                    .face(Direction.DOWN).uvs(0, 0, 16, 16).texture("#bottom").cullface(Direction.DOWN).end()
+                    .face(Direction.UP).uvs(0, 0, 16, 16).texture("#top").end()
+                    .face(Direction.NORTH).uvs(0, 1, 16, 16).texture("#dirt").cullface(Direction.NORTH).end()
+                    .face(Direction.SOUTH).uvs(0, 1, 16, 16).texture("#dirt").cullface(Direction.SOUTH).end()
+                    .face(Direction.WEST).uvs(0, 1, 16, 16).texture("#dirt").cullface(Direction.WEST).end()
+                    .face(Direction.EAST).uvs(0, 1, 16, 16).texture("#dirt").cullface(Direction.EAST).end().end()
+                    .texture("dirt", ImmersiveWeathering.res("block/earthen_clay_side_soaked"))
+                    .texture("top", ImmersiveWeathering.res("block/earthen_clay_farmland_moist"))
+                    .texture("bottom", ImmersiveWeathering.res("block/earthen_clay_bottom_soaked")));
+            return builder;});
+        farmland(ModBlocks.LOAMY_FARMLAND, (state, name) -> {var builder = ConfiguredModel.builder();
+            builder.modelFile(this.models().withExistingParent(name, ImmersiveWeathering.res("block/earthen_clay_farmland"))
+                    .texture("dirt", ImmersiveWeathering.res("block/loam_side"))
+                    .texture("top", ImmersiveWeathering.res("block/loamy_farmland"))
+                    .texture("bottom", ImmersiveWeathering.res("minecraft:block/dirt"))
+            );
+            return builder;}, (state, name) -> {var builder = ConfiguredModel.builder();
+            builder.modelFile(this.models().withExistingParent(name + "_moist", ImmersiveWeathering.res("block/earthen_clay_farmland"))
+                    .texture("dirt", ImmersiveWeathering.res("block/loam_side"))
+                    .texture("top", ImmersiveWeathering.res("block/loamy_farmland_moist"))
+                    .texture("bottom", ImmersiveWeathering.res("minecraft:block/dirt")));
+            return builder;});
+        farmland(ModBlocks.SANDY_FARMLAND, (state, name) -> {var builder = ConfiguredModel.builder();
+            builder.modelFile(this.models().withExistingParent(name, ImmersiveWeathering.res("minecraft:block/template_farmland"))
+                    .texture("dirt", ImmersiveWeathering.res("block/sandy_dirt"))
+                    .texture("top", ImmersiveWeathering.res("block/sandy_farmland"))
+            );
+            return builder;}, (state, name) -> {var builder = ConfiguredModel.builder();
+            builder.modelFile(this.models().withExistingParent(name + "_moist", ImmersiveWeathering.res("minecraft:block/template_farmland"))
+                    .texture("dirt", ImmersiveWeathering.res("block/sandy_dirt"))
+                    .texture("top", ImmersiveWeathering.res("block/sandy_farmland_moist"))
+            );
+            return builder;});
+        farmland(ModBlocks.SILTY_FARMLAND, (state, name) -> {var builder = ConfiguredModel.builder();
+            builder.modelFile(this.models().withExistingParent(name, ImmersiveWeathering.res("minecraft:block/template_farmland"))
+                    .texture("dirt", ImmersiveWeathering.res("block/silt"))
+                    .texture("top", ImmersiveWeathering.res("block/silty_farmland"))
+            );
+            return builder;}, (state, name) -> {var builder = ConfiguredModel.builder();
+            builder.modelFile(this.models().withExistingParent(name + "_moist", ImmersiveWeathering.res("minecraft:block/template_farmland"))
+                    .texture("dirt", ImmersiveWeathering.res("block/silt"))
+                    .texture("top", ImmersiveWeathering.res("block/silty_farmland_moist"))
+            );
+            return builder;});
 
         directionalBlock(ModBlocks.FULGURITE.get(), this.models().withExistingParent("fulgurite", ImmersiveWeathering.res("minecraft:block/cross")).texture("cross", "immersive_weathering:block/fulgurite"));
 
@@ -655,6 +750,19 @@ public class ModBlockStateProvider extends BlockStateProvider {
         var inventory = this.models().withExistingParent(name + "_inventory", ImmersiveWeathering.res("block/mossy_template_wall_inventory")).texture("top", extend(blockTexture(texture.get()), "_0")).texture("side", extend(blockTexture(texture.get()), "_0")).texture("bottom", extend(blockTexture(texture.get()), "_0"));
         this.simpleBlockItem(block.get(), inventory);
         this.simpleBlockItem(block.get(), new ModelFile.UncheckedModelFile(ImmersiveWeathering.res("block/" + this.name(block.get()) + "_inventory")));
+    }
+
+    private void farmland(DeferredBlock<? extends Block> block, BiFunction<BlockState, String, ConfiguredModel.Builder<?>> func, BiFunction<BlockState, String, ConfiguredModel.Builder<?>> moistFunc) {
+        String name = this.name(block.get());
+        this.getVariantBuilder(block.get()).forAllStatesExcept((state) -> {
+            int moisture = state.getValue(ModFarmlandBlock.MOISTURE);
+            if (moisture == 7) {
+                return moistFunc.apply(state, name).build();
+            } else {
+                return func.apply(state, name).build();
+            }
+        });
+        this.simpleBlockItem(block.get(), this.models().getExistingFile(ImmersiveWeathering.res("block/" + this.name(block.get()))));
     }
 
     public void mossyWallBlock(WallBlock block, ResourceLocation texture) {

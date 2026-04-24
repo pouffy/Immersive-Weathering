@@ -1,0 +1,47 @@
+{
+  "parent": "minecraft:block/template_farmland",
+  "elements": [
+    {
+      "faces": {
+        "down": {
+          "cullface": "down",
+          "texture": "#bottom"
+        },
+        "east": {
+          "cullface": "east",
+          "texture": "#dirt"
+        },
+        "north": {
+          "cullface": "north",
+          "texture": "#dirt"
+        },
+        "south": {
+          "cullface": "south",
+          "texture": "#dirt"
+        },
+        "up": {
+          "texture": "#top"
+        },
+        "west": {
+          "cullface": "west",
+          "texture": "#dirt"
+        }
+      },
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        15,
+        16
+      ]
+    }
+  ],
+  "textures": {
+    "bottom": "immersive_weathering:block/earthen_clay_bottom_soaked",
+    "dirt": "immersive_weathering:block/earthen_clay_side_soaked",
+    "top": "immersive_weathering:block/earthen_clay_farmland_moist"
+  }
+}

@@ -13,4 +13,3 @@
 - Recipes
 - Advancements
 - Block States
-- Sounds
